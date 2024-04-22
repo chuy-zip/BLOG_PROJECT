@@ -8,6 +8,6 @@ RUN npm install
 
 COPY ./src ./src
 
-RUN npm install express cors crypto-js
+RUN npm install express cors crypto-js mysql2
 
 CMD ["npm", "start"]
