@@ -1,0 +1,115 @@
+.loader {
+    width: 100px;
+    height: 40px;
+    --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#fff calc(100% - 3px) 98%,#0000 101%) no-repeat;
+    background: var(--g), var(--g), var(--g);
+    background-size: 30px 30px;
+    animation: l9 1s infinite alternate;
+}
+@keyframes l9 {
+    0% {
+        background-position: 0 50%, 50% 50%, 100% 50%;
+    }
+    20% {
+        background-position: 0 0, 50% 50%, 100% 50%;
+    }
+    40% {
+        background-position: 0 100%, 50% 0, 100% 50%;
+    }
+    60% {
+        background-position: 0 50%, 50% 100%, 100% 0;
+    }
+    80% {
+        background-position: 0 50%, 50% 50%, 100% 100%;
+    }
+    100% {
+        background-position: 0 50%, 50% 50%, 100% 50%;
+    }
+}
+
+/* bodyCSS */
+body {
+    margin: 0;
+    background-image: url("@assets/back6.jpg");
+    background-color: #152642;
+    overflow-y: hidden; 
+}
+
+/* headerCSS */
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding-left: 0px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #25244F;  
+    color: #dbdfde;
+    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+/* imgIconCSS */
+.clickableIcon {
+    margin: 10px;
+    width: 60px;
+}
+
+/* gamesContainerCSS */
+.gamesContainer {
+    display: grid;
+    width: 70%;
+    background-color: rgba(68, 77, 136, 0.9);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    row-gap: 40px;
+    column-gap: 10px;
+    margin: auto;
+    padding-top: 40px;
+    margin-top: 100px;
+    overflow: auto;
+    height: calc(100vh - 100px);  
+}
+
+.gamesContainer::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .gamesContainer {
+        row-gap: 30px;
+    }
+}
+
+/* gameCardContainerCSS */
+.gameCardContainer {
+    background-color: #d7dada;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 300px;
+    margin: auto;
+}
+
+/* cardHeaderCSS */
+.cardHeader {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #dbdfde;
+    background-color: #2F3466;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+    font-weight: bold;
+    padding-left: 10px;
+    height: 100px;
+    width: 240px;
+}
+
+.cardHeader h2,
+.cardHeader h4 {
+    margin: 10px; /* Remove margin for h3 and h5 */
+}

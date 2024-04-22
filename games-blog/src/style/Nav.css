@@ -1,0 +1,27 @@
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:  #25244F;
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    font-size: 20px;;
+}
+  
+a {
+  float: left;
+}
+  
+a {
+  
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  
+a:hover {
+  background-color: #232169;
+}
