@@ -6,7 +6,6 @@ const Nav = () => {
     return (
         <nav>
             <a href="#/" onClick={() => navigate('/')}>Inicio</a> |
-            <a href="#/about" onClick={() => navigate('/about')}>Sobre</a> |
             {
                 isLoggedIn ? (
                     <a href="#/reporte" onClick={() => navigate('/report')}>Reporte</a> |
