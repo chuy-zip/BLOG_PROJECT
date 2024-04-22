@@ -30,8 +30,8 @@
 /* bodyCSS */
 body {
     margin: 0;
-    background-image: url("@assets/back6.jpg");
-    background-color: #152642;
+    background-color: rgb(68, 77, 136);
+    
     overflow-y: hidden; 
 }
 
@@ -61,7 +61,7 @@ body {
 .gamesContainer {
     display: grid;
     width: 70%;
-    background-color: rgba(68, 77, 136, 0.9);
+    
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     row-gap: 40px;
     column-gap: 10px;

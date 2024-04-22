@@ -1,4 +1,6 @@
 import useNavigate from "@hooks/useNavigate"
+import Icon from "./Icon"
+import gitIcon from '@assets/gitIconDark.png'
 import '@style/Nav.css'
 
 const Nav = () => {
@@ -6,12 +8,10 @@ const Nav = () => {
 
     return (
         <div className="headerContainer">
-            
-            
 
             <nav>
 
-                <h3 style={{margin: '0px', marginTop:'10px', paddingLeft:'14px'}}>Videogame recommendations</h3> 
+                <h3 style={{margin: '0px', marginTop:'10px', paddingLeft:'16px'}}>Videogame recommendations</h3> 
                 
                 <a href="#/" onClick={() => navigate('/')}>Home</a>
                 {
@@ -25,7 +25,10 @@ const Nav = () => {
                         <a href="#/login" onClick={() => navigate('/login')}>Login</a>
                     )
                 }
+                 
             </nav>
+
+            <Icon imgSrc = {gitIcon} url ={"https://github.com/chuy-zip/BLOG_PROJECT"}/>  
 
         </div>
         
