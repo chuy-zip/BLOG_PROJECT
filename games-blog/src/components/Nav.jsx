@@ -14,6 +14,8 @@ const Nav = () => {
                 <h3 style={{margin: '0px', marginTop:'10px', paddingLeft:'16px'}}>Videogame recommendations</h3> 
                 
                 <a href="#/" onClick={() => navigate('/')}>Home</a>
+                
+
                 {
                     isLoggedIn ? (
                         <>
@@ -22,7 +24,15 @@ const Nav = () => {
                         </>
                         
                     ) : (
-                        <a href="#/login" onClick={() => navigate('/login')}>Login</a>
+                        <>
+                            <a href="#/login" onClick={() => navigate('/login')}>Login</a>
+                            <a href="#/create" onClick={() => navigate('/create')}>Create</a>
+                            <a href="#/update" onClick={() => navigate('/update')}>Update</a>
+                            <a href="#/delete" onClick={() => navigate('/delete')}>Delete</a>
+                            
+                            
+                        </>
+                        
                     )
                 }
                  

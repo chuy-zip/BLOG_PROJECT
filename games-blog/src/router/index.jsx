@@ -2,6 +2,10 @@ import useNavigate from '@hooks/useNavigate'
 import Nav from '@components/Nav'
 import Home from '@pages/Home';
 import Login from '@pages/Login';
+import Create from '@pages/Create';
+import Update from '@pages/Update'; 
+import Delete from '@pages/Delete';
+
 
 
 const routes = {
@@ -11,6 +15,18 @@ const routes = {
     },
     '/login': {
         component: Login,
+        requiresAuth: false
+    },
+    '/create': {
+        component: Create,
+        requiresAuth: false
+    },
+    '/update': {
+        component: Update,
+        requiresAuth: false
+    },
+    '/delete': {
+        component: Delete,
         requiresAuth: false
     },
     
