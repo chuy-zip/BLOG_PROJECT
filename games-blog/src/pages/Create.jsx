@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import createGame from '@controller/postController';
-function CreateForm({handleChange, handleSubmit, formData}) {
+function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
     return (
         <div className='formContainer'>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h1 style={{ textAlign: "center" }}>
                     Create a new recommendation
                 </h1>
@@ -14,7 +14,10 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                     className="inputStyle"
                     type="text"
                     id="title"
-                    name="title" />
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                />
 
                 <br />
                 <label htmlFor="description">Game description:</label>
@@ -23,7 +26,10 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                     className="inputStyle"
                     type="text"
                     id="description"
-                    name="description" />
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                />
 
                 <br />
                 <label htmlFor="genre">Game genre:</label>
@@ -32,7 +38,10 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                     className="inputStyle"
                     type="text"
                     id="genre"
-                    name="genre" />
+                    name="genre"
+                    value={formData.genre}
+                    onChange={handleChange}
+                />
 
                 <br />
                 <label htmlFor="platform">Main Platform:</label>
@@ -40,7 +49,9 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                 <select
                     className="selectStyle"
                     id="platform"
-                    name="platform">
+                    name="platform"
+                    value={formData.platform}
+                    onChange={handleChange}>
                     <option value="PC">PC</option>
                     <option value="Nintendo">Nintendo</option>
                     <option value="PlayStation">PlayStation</option>
@@ -53,7 +64,9 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                 <select
                     className="selectStyle"
                     id="multiplayerSupport"
-                    name="multiplayerSupport">
+                    name="multiplayerSupport"
+                    value={formData.multiplayerSupport}
+                    onChange={handleChange}>
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
@@ -64,7 +77,9 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                 <select
                     className="selectStyle"
                     id="onlineFeatures"
-                    name="onlineFeatures">
+                    name="onlineFeatures"
+                    value={formData.onlineFeatures}
+                    onChange={handleChange}>
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
@@ -72,6 +87,7 @@ function CreateForm({handleChange, handleSubmit, formData}) {
                 <br />
                 <br />
                 <button type="submit">Submit</button>
+                {successMessage && <p>{successMessage}</p>}
 
             </form>
 
@@ -89,6 +105,8 @@ function Create() {
         multiplayerSupport: 'true',
         onlineFeatures: 'true',
     });
+
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
         setFormData({
@@ -109,6 +127,7 @@ function Create() {
                 formData.onlineFeatures === 'true' // Convert string to boolean
             );
             console.log('Game created:', response);
+            setSuccessMessage('Successfully added game!');
             // Optionally, reset form fields after successful submission
             setFormData({
                 title: '',
@@ -120,13 +139,18 @@ function Create() {
             });
         } catch (error) {
             console.error('Error creating game:', error);
+            setSuccessMessage('Something went wrong. Game was not added!');
             // Handle error
         }
     };
 
     return (
         <div>
-            <CreateForm />
+            <CreateForm
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                formData={formData}
+                successMessage={successMessage}/>
 
         </div>
     );
