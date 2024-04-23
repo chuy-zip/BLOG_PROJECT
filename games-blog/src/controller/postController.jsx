@@ -16,4 +16,36 @@ async function getAllGames(setVideogames, setIsEmpty, setError, setLoading) {
     }
 }
 
-export {getAllGames}
+async function createGame(title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures) {
+    try {
+      const response = await fetch('http://localhost:22107/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          gameDescription,
+          genre,
+          mainPlatform,
+          multiplayerSupport,
+          onlineFeatures,
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to create game');
+      }
+      
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error creating game:', error.message);
+      throw error;
+    }
+  }
+  
+  export default createGame;
+  
+
+export {getAllGames, createGame}

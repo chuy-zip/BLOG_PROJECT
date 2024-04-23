@@ -1,43 +1,45 @@
-function Create() {
+import { useState } from 'react';
+import createGame from '@controller/postController';
+function CreateForm({handleChange, handleSubmit, formData}) {
     return (
-        <div className="formContainer"> 
+        <div className='formContainer'>
             <form>
                 <h1 style={{ textAlign: "center" }}>
                     Create a new recommendation
                 </h1>
 
                 <label htmlFor="title">Game title:</label>
-                <br/>
-                <input 
+                <br />
+                <input
                     className="inputStyle"
-                    type="text" 
-                    id="title" 
+                    type="text"
+                    id="title"
                     name="title" />
 
-                <br/>
+                <br />
                 <label htmlFor="description">Game description:</label>
-                <br/>
-                <input 
+                <br />
+                <input
                     className="inputStyle"
-                    type="text" 
-                    id="description" 
+                    type="text"
+                    id="description"
                     name="description" />
 
-                <br/>
+                <br />
                 <label htmlFor="genre">Game genre:</label>
-                <br/>
-                <input 
+                <br />
+                <input
                     className="inputStyle"
-                    type="text" 
-                    id="genre" 
-                    name="genre" />    
+                    type="text"
+                    id="genre"
+                    name="genre" />
 
-                <br/>
+                <br />
                 <label htmlFor="platform">Main Platform:</label>
-                <br/>  
-                <select 
+                <br />
+                <select
                     className="selectStyle"
-                    id="platform" 
+                    id="platform"
                     name="platform">
                     <option value="PC">PC</option>
                     <option value="Nintendo">Nintendo</option>
@@ -45,33 +47,87 @@ function Create() {
                     <option value="Xbox">Xbox</option>
                 </select>
 
-                <br/>
+                <br />
                 <label htmlFor="multiplayerSupport">Multiplayer Support:</label>
-                <br/>  
-                <select 
+                <br />
+                <select
                     className="selectStyle"
-                    id="multiplayerSupport" 
+                    id="multiplayerSupport"
                     name="multiplayerSupport">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
 
-                <br/>
+                <br />
                 <label htmlFor="onlineFeatures">Online Features:</label>
-                <br/>  
-                <select 
+                <br />
+                <select
                     className="selectStyle"
-                    id="onlineFeatures" 
+                    id="onlineFeatures"
                     name="onlineFeatures">
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
 
-                <br/>  
-                <br/>  
+                <br />
+                <br />
                 <button type="submit">Submit</button>
 
             </form>
+
+        </div>
+    )
+}
+
+function Create() {
+
+    const [formData, setFormData] = useState({
+        title: '',
+        description: '',
+        genre: '',
+        platform: 'PC',
+        multiplayerSupport: 'true',
+        onlineFeatures: 'true',
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await createGame(
+                formData.title,
+                formData.description,
+                formData.genre,
+                formData.platform,
+                formData.multiplayerSupport === 'true', // Convert string to boolean
+                formData.onlineFeatures === 'true' // Convert string to boolean
+            );
+            console.log('Game created:', response);
+            // Optionally, reset form fields after successful submission
+            setFormData({
+                title: '',
+                description: '',
+                genre: '',
+                platform: 'PC',
+                multiplayerSupport: 'true',
+                onlineFeatures: 'true',
+            });
+        } catch (error) {
+            console.error('Error creating game:', error);
+            // Handle error
+        }
+    };
+
+    return (
+        <div>
+            <CreateForm />
+
         </div>
     );
 }
