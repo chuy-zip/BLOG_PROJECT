@@ -1,7 +1,7 @@
 .loader {
     width: 100px;
     height: 40px;
-    --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#fff calc(100% - 3px) 98%,#0000 101%) no-repeat;
+    --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#69abc1 calc(100% - 3px) 98%,#0000 101%) no-repeat;
     background: var(--g), var(--g), var(--g);
     background-size: 30px 30px;
     animation: l9 1s infinite alternate;
@@ -30,7 +30,7 @@
 /* bodyCSS */
 body {
     margin: 0;
-    background-color: rgb(68, 77, 136);
+    background-color: #ffffff;
     
     overflow-y: hidden; 
 }
@@ -45,8 +45,8 @@ body {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: #25244F;  
-    color: #dbdfde;
+    background-color: #223f61;  
+    color: #ffffff;
     box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
     z-index: 100;
 }
@@ -81,7 +81,7 @@ body {
     margin-top: 100px;
     height: calc(100vh - 100px);
     text-align: center;
-    color: #dbdfde;
+    color: #000000;
 }
 
 .gamesContainer::-webkit-scrollbar {
@@ -96,10 +96,11 @@ body {
 
 /* gameCardContainerCSS */
 .gameCardContainer {
-    background-color: #d7dada;
+    background-color: #ffffff;
+    color: #223f61;
     text-align: left;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.7);
     width: 250px;
     height: 300px;
     margin: auto;
@@ -111,8 +112,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #dbdfde;
-    background-color: #2F3466;
+    color: #ffffff;
+    background-color: #69abc1;
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px;
     font-weight: bold;
