@@ -61,7 +61,6 @@ body {
 .gamesContainer {
     display: grid;
     width: 70%;
-    
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     row-gap: 40px;
     column-gap: 10px;
@@ -70,6 +69,19 @@ body {
     margin-top: 100px;
     overflow: auto;
     height: calc(100vh - 100px);  
+}
+
+.stateContainer {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+    padding-top: 40px;
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    text-align: center;
+    color: #dbdfde;
 }
 
 .gamesContainer::-webkit-scrollbar {
