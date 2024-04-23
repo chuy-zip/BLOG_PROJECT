@@ -1,6 +1,11 @@
 function Update(){
     return (
-        <div style={{marginTop: '400px', margin: 'auto'}}> Update </div>
+        <div className="formContainer"> 
+            <h1 style={{ textAlign:"center"}}>
+                Update a recommendation
+            </h1>
+
+        </div>
     )
 }
 

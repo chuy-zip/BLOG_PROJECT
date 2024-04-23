@@ -21,11 +21,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #223f61;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
+  background-color: #69abc1;
   border-color: #646cff;
 }
 button:focus,
@@ -44,4 +45,66 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.formContainer {
+  background-color: white;
+  border-radius: 1vw;
+  border: 0.2vw solid #69abc1;
+  box-shadow: 0.2vw 0.2vw #69abc1;
+  margin: auto;
+  margin-top: 140px;
+  min-width: 180px;
+  min-height: 270px; /* Adjust the height as needed */
+  max-height: 70%;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 70%;
+}
+
+.formContainer::-webkit-scrollbar {
+  width: 5px;
+  height: 10px; /* Set the height to 5px for horizontal scrollbar */
+}
+
+.formContainer::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.formContainer::-webkit-scrollbar-thumb {
+  background: #69abc1;
+  border-radius: 5px;
+}
+
+.formContainer::-webkit-scrollbar-thumb:hover {
+  background: #223f61;
+}
+
+input {
+  border-radius: 0.5vw;
+  padding: 0.6em 1.2em;
+  width: 10vw;
+  margin: 0.8vw;
+  border: 0.1vw solid #ffffff;
+  box-sizing: border-box;
+  transition: 0.5s;
+  outline: none;
+
+  @media (min-width: 200px) {
+    width: 100%;
+  }
+}
+
+input:focus {
+  border: 0.1vw solid #223f61;
+}
+
+input:hover {
+  border: 0.1vw solid #223f61;
+}
+
+.inputStyle{
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
 }

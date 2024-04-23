@@ -71,6 +71,10 @@ body {
     height: calc(100vh - 100px);  
 }
 
+.gamesContainer::-webkit-scrollbar {
+    display: none;
+}
+
 .stateContainer {
     margin: auto;
     display: flex;
@@ -84,9 +88,7 @@ body {
     color: #000000;
 }
 
-.gamesContainer::-webkit-scrollbar {
-    display: none;
-}
+
 
 @media (max-width: 768px) {
     .gamesContainer {

@@ -1,6 +1,11 @@
 function Create(){
     return (
-        <div style={{marginTop: '400px', margin: 'auto'}}> Create </div>
+        <div className="formContainer"> 
+            <h1 style={{ textAlign:"center"}}>
+                Create a new recommendation
+            </h1>
+
+        </div>
     )
 }
 

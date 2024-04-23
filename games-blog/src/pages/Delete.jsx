@@ -1,6 +1,11 @@
 function Delete(){
     return (
-        <div style={{marginTop: '400px', margin: 'auto'}}> Delete </div>
+        <div className="formContainer"> 
+            <h1 style={{ textAlign:"center"}}>
+                Delete a reccomendation
+            </h1>
+
+        </div>
     )
 }
 
