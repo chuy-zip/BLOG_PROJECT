@@ -88,8 +88,6 @@ body {
     color: #000000;
 }
 
-
-
 @media (max-width: 768px) {
     .gamesContainer {
         row-gap: 30px;
@@ -126,5 +124,5 @@ body {
 
 .cardHeader h2,
 .cardHeader h4 {
-    margin: 10px; /* Remove margin for h3 and h5 */
+    margin: 10px; 
 }
