@@ -1,8 +1,11 @@
 function Icon({imgSrc, url}){
-    return (<figure>
-            <a href = {url}>
-                <img src={imgSrc} alt="Icon" className="clickableIcon" />
-            </a> 
+    return (
+        <figure  >
+            <img 
+                src={imgSrc} 
+                alt="Icon" 
+                href = {url}
+                className="clickableIcon"/> 
         </figure>
     );
 }

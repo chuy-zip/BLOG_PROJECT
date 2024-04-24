@@ -38,7 +38,9 @@ const Nav = () => {
                  
             </nav>
 
-            <Icon imgSrc = {gitIcon} url ={"https://github.com/chuy-zip/BLOG_PROJECT"}/>  
+            <Icon 
+                imgSrc = {gitIcon} 
+                url ={"https://github.com/chuy-zip/BLOG_PROJECT"}/>  
 
         </div>
         

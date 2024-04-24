@@ -5,9 +5,47 @@ nav {
     overflow: hidden;
     background-color:  #223f61;
     position: absolute;
-    width: 50%;
+    width: 90%;
     height: 100px;
     font-size: 20px;;
+}
+
+@media only screen and (max-width: 490px) {
+  nav {
+      height: 150px; /* Adjust height for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  nav {
+      height: 180px; /* Adjust height for smaller screens */
+  }
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #223f61;
+  color: #ffffff;
+  box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+@media only screen and (max-width: 490px) {
+  .headerContainer {
+      height: 150px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .headerContainer {
+      height: 180px;
+  }
 }
   
 a {
@@ -26,9 +64,21 @@ a:hover {
 }
 
 .clickableIcon {
-  margin-top: 20px;
   width: 60px;
+  height: 60px;
   right: 0;
-  top: 0;
   position: absolute;
 }
+
+@media only screen and (max-width: 430px) {
+  .clickableIcon {
+    bottom: 10px; 
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .clickableIcon {
+    bottom: 50px; 
+  }
+}
+

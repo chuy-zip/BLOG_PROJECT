@@ -1,27 +1,33 @@
 .loader {
     width: 100px;
     height: 40px;
-    --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#69abc1 calc(100% - 3px) 98%,#0000 101%) no-repeat;
+    --g: radial-gradient(farthest-side, #0000 calc(95% - 3px), #69abc1 calc(100% - 3px) 98%, #0000 101%) no-repeat;
     background: var(--g), var(--g), var(--g);
     background-size: 30px 30px;
     animation: l9 1s infinite alternate;
 }
+
 @keyframes l9 {
     0% {
         background-position: 0 50%, 50% 50%, 100% 50%;
     }
+
     20% {
         background-position: 0 0, 50% 50%, 100% 50%;
     }
+
     40% {
         background-position: 0 100%, 50% 0, 100% 50%;
     }
+
     60% {
         background-position: 0 50%, 50% 100%, 100% 0;
     }
+
     80% {
         background-position: 0 50%, 50% 50%, 100% 100%;
     }
+
     100% {
         background-position: 0 50%, 50% 50%, 100% 50%;
     }
@@ -31,24 +37,8 @@
 body {
     margin: 0;
     background-color: #ffffff;
-    
-    overflow-y: hidden; 
-}
 
-/* headerCSS */
-.headerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100px;
-    padding-left: 0px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background-color: #223f61;  
-    color: #ffffff;
-    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
-    z-index: 100;
+    overflow-y: hidden;
 }
 
 /* imgIconCSS */
@@ -68,7 +58,7 @@ body {
     padding-top: 40px;
     margin-top: 100px;
     overflow: auto;
-    height: calc(100vh - 100px);  
+    height: calc(100vh - 100px);
 }
 
 .gamesContainer::-webkit-scrollbar {
@@ -114,7 +104,7 @@ body {
     justify-content: center;
     color: #ffffff;
     background-color: #69abc1;
-    border-top-left-radius: 10px; 
+    border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     font-weight: bold;
     padding-left: 10px;
@@ -124,5 +114,5 @@ body {
 
 .cardHeader h2,
 .cardHeader h4 {
-    margin: 10px; 
+    margin: 10px;
 }
