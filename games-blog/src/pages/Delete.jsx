@@ -22,12 +22,12 @@ function DeleteForm({ games, handleChange, handleSubmit, selection, successMessa
                     name="platform"
                     value={selection}
                     onChange={handleChange}>
-                    
+
                     {games.map((game, index) => (
-                        <option 
+                        <option
                             value={game.id}
                             key={index}>
-                                {game.title}
+                            {game.title}
                         </option>
 
                     ))}
@@ -35,8 +35,11 @@ function DeleteForm({ games, handleChange, handleSubmit, selection, successMessa
 
                 <br />
                 <br />
-                <button type="submit">Delete</button>
-                {successMessage && <p style={{marginLeft:'30px'}}>{successMessage}</p>}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <button type="submit">Delete</button>
+                    {successMessage && <p style={{ marginLeft: '10px' }}>{successMessage}</p>}
+                </div>
+
 
             </form>
 
@@ -60,7 +63,6 @@ function Delete() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(selection)
             deleteGame(selection)
             setSuccessMessage('Succesfully deleted game')
             getAllGames(setVideogames, setIsEmpty, setError, setLoading);
@@ -76,9 +78,9 @@ function Delete() {
     }, []);
 
     useEffect(() => {
-        
+
         if (videogames.length > 0) {
-           setSelection(videogames[0].id);
+            setSelection(videogames[0].id);
         }
     }, [videogames]);
 
@@ -107,12 +109,12 @@ function Delete() {
     }
 
     return (
-        <DeleteForm 
-            games={videogames} 
-            handleChange={handleChange} 
-            handleSubmit={handleSubmit} 
+        <DeleteForm
+            games={videogames}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
             selection={selection}
-            successMessage={successMessage}/>
+            successMessage={successMessage} />
     )
 }
 

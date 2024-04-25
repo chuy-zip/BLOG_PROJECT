@@ -113,8 +113,10 @@ function UpdateForm({ games, handleSelectionChange, handleChange, handleSubmit, 
 
                 <br />
                 <br />
-                <button type="submit">Update</button>
-                {successMessage && <p style={{ marginLeft: '30px' }}>{successMessage}</p>}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <button type="submit">Update</button>
+                    {successMessage && <p style={{ marginLeft: '10px' }}>{successMessage}</p>}
+                </div>
 
             </form>
 
@@ -191,9 +193,6 @@ function Update() {
         if (selection) {
 
             let filteredGame = videogames.filter(game => game.id == selection)
-            console.log("filtered", filteredGame[0])
-            console.log("filtered", filteredGame[0].multiplayer_support)
-            console.log("filtered", filteredGame[0].online_features)
 
             let selectedGame = filteredGame[0]
             setFormData({
@@ -204,8 +203,6 @@ function Update() {
                 multiplayerSupport: !!selectedGame.multiplayer_support,
                 onlineFeatures: !!selectedGame.online_features
             })
-
-            console.log(formData)
 
         }
     }, [selection])
