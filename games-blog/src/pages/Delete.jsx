@@ -13,13 +13,13 @@ function DeleteForm({ games, handleChange, handleSubmit, selection, successMessa
                     Delete a reccomendation
                 </h1>
 
-                <label htmlFor="delete">Select the game to be deleted:</label>
+                <label htmlFor="gameToDelete">Select the game to be deleted:</label>
                 <br />
 
                 <select
                     className="selectStyle"
-                    id="platform"
-                    name="platform"
+                    id="gameToDelete"
+                    name="gameToDelete"
                     value={selection}
                     onChange={handleChange}>
 

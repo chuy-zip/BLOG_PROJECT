@@ -13,18 +13,19 @@ function UpdateForm({ games, handleSelectionChange, handleChange, handleSubmit, 
                 <h1 style={{ textAlign: "center" }}>
                     Update a recommendation
                 </h1>
-                <label htmlFor="delete">Select the game to be deleted:</label>
+                <label htmlFor="gameToUpdate">Select the game to be deleted:</label>
                 <br />
 
                 <select
                     className="selectStyle"
-                    id="platform"
-                    name="platform"
+                    id="gameToUpdate"
+                    name="gameToUpdate"
                     value={selection}
                     onChange={handleSelectionChange}>
 
                     {games.map((game, index) => (
                         <option
+
                             value={game.id}
                             key={index}>
                             {game.title}
