@@ -24,6 +24,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 button:hover {
   background-color: #69abc1;
@@ -129,4 +130,12 @@ input:hover {
   outline: none;
   width: 20%;
   margin-left: 30px;  
+}
+
+.selectStyle:focus {
+  border: 0.1vw solid #69abc1;
+}
+
+.selectStyle:hover {
+  border: 0.1vw solid #69abc1;
 }
