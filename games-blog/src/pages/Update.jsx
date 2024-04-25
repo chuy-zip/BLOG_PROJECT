@@ -7,107 +7,116 @@ import { getAllGames, updateGame } from '@controller/postController';
 function UpdateForm({ games, handleSelectionChange, handleChange, handleSubmit, selection, successMessage, formData }) {
     return (
         <div className="formContainer">
-            <h1 style={{ textAlign: "center" }}>
-                Update a recommendation
-            </h1>
-            <label htmlFor="delete">Select the game to be deleted:</label>
-            <br />
 
-            <select
-                className="selectStyle"
-                id="platform"
-                name="platform"
-                value={selection}
-                onChange={handleSelectionChange}>
+            <form onSubmit={handleSubmit}>
 
-                {games.map((game, index) => (
-                    <option
-                        value={game.id}
-                        key={index}>
-                        {game.title}
-                    </option>
+                <h1 style={{ textAlign: "center" }}>
+                    Update a recommendation
+                </h1>
+                <label htmlFor="delete">Select the game to be deleted:</label>
+                <br />
 
-                ))}
-            </select>
+                <select
+                    className="selectStyle"
+                    id="platform"
+                    name="platform"
+                    value={selection}
+                    onChange={handleSelectionChange}>
 
-            <br />
+                    {games.map((game, index) => (
+                        <option
+                            value={game.id}
+                            key={index}>
+                            {game.title}
+                        </option>
 
-            <label htmlFor="title">Game title:</label>
-            <br />
-            <input
-                className="inputStyle"
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-            />
+                    ))}
+                </select>
 
-            <br />
-            <label htmlFor="description">Game description:</label>
-            <br />
-            <input
-                className="inputStyle"
-                type="text"
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-            />
+                <br />
 
-            <br />
-            <label htmlFor="genre">Game genre:</label>
-            <br />
-            <input
-                className="inputStyle"
-                type="text"
-                id="genre"
-                name="genre"
-                value={formData.genre}
-                onChange={handleChange}
-            />
+                <label htmlFor="title">Game title:</label>
+                <br />
+                <input
+                    className="inputStyle"
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                />
 
-            <br />
-            <label htmlFor="platform">Main Platform:</label>
-            <br />
-            <select
-                className="selectStyle"
-                id="platform"
-                name="platform"
-                value={formData.platform}
-                onChange={handleChange}>
-                <option value="PC">PC</option>
-                <option value="Nintendo">Nintendo</option>
-                <option value="PlayStation">PlayStation</option>
-                <option value="Xbox">Xbox</option>
-            </select>
+                <br />
+                <label htmlFor="description">Game description:</label>
+                <br />
+                <input
+                    className="inputStyle"
+                    type="text"
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                />
 
-            <br />
-            <label htmlFor="multiplayerSupport">Multiplayer Support:</label>
-            <br />
-            <select
-                className="selectStyle"
-                id="multiplayerSupport"
-                name="multiplayerSupport"
-                value={formData.multiplayerSupport}
-                onChange={handleChange}>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
+                <br />
+                <label htmlFor="genre">Game genre:</label>
+                <br />
+                <input
+                    className="inputStyle"
+                    type="text"
+                    id="genre"
+                    name="genre"
+                    value={formData.genre}
+                    onChange={handleChange}
+                />
 
-            <br />
-            <label htmlFor="onlineFeatures">Online Features:</label>
-            <br />
-            <select
-                className="selectStyle"
-                id="onlineFeatures"
-                name="onlineFeatures"
-                value={formData.onlineFeatures}
-                onChange={handleChange}>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
+                <br />
+                <label htmlFor="platform">Main Platform:</label>
+                <br />
+                <select
+                    className="selectStyle"
+                    id="platform"
+                    name="platform"
+                    value={formData.platform}
+                    onChange={handleChange}>
+                    <option value="PC">PC</option>
+                    <option value="Nintendo">Nintendo</option>
+                    <option value="PlayStation">PlayStation</option>
+                    <option value="Xbox">Xbox</option>
+                </select>
 
+                <br />
+                <label htmlFor="multiplayerSupport">Multiplayer Support:</label>
+                <br />
+                <select
+                    className="selectStyle"
+                    id="multiplayerSupport"
+                    name="multiplayerSupport"
+                    value={formData.multiplayerSupport}
+                    onChange={handleChange}>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+
+                <br />
+                <label htmlFor="onlineFeatures">Online Features:</label>
+                <br />
+                <select
+                    className="selectStyle"
+                    id="onlineFeatures"
+                    name="onlineFeatures"
+                    value={formData.onlineFeatures}
+                    onChange={handleChange}>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+
+                <br />
+                <br />
+                <button type="submit">Update</button>
+                {successMessage && <p style={{ marginLeft: '30px' }}>{successMessage}</p>}
+
+            </form>
 
         </div>
     )
@@ -173,7 +182,7 @@ function Update() {
     useEffect(() => {
         if (videogames.length > 0) {
             setSelection(videogames[0].id);
-            
+
         }
 
     }, [videogames])

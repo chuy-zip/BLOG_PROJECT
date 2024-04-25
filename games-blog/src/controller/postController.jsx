@@ -1,6 +1,6 @@
 async function getAllGames(setVideogames, setIsEmpty, setError, setLoading) {
   try {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     let gameList = await fetch('http://localhost:22107/posts');
     if (!gameList.ok) {
