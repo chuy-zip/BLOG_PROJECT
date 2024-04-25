@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { getAllGames } from '@controller/postController.jsx';
+import { getAllGames, deleteGame } from '@controller/postController.jsx';
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
 
-function DeleteForm({ games, handleChange, handleSubmit, selection }) {
+function DeleteForm({ games, handleChange, handleSubmit, selection, successMessage }) {
     return (
         <div className="formContainer">
 
@@ -36,6 +36,7 @@ function DeleteForm({ games, handleChange, handleSubmit, selection }) {
                 <br />
                 <br />
                 <button type="submit">Delete</button>
+                {successMessage && <p style={{marginLeft:'30px'}}>{successMessage}</p>}
 
             </form>
 
@@ -50,6 +51,7 @@ function Delete() {
     const [error, setError] = useState(false);
     const [isEmpty, setIsEmpty] = useState(false);
     const [selection, setSelection] = useState();
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
         setSelection(e.target.value);
@@ -59,6 +61,9 @@ function Delete() {
         e.preventDefault();
         try {
             console.log(selection)
+            deleteGame(selection)
+            setSuccessMessage('Succesfully deleted game')
+            getAllGames(setVideogames, setIsEmpty, setError, setLoading);
         } catch (error) {
             console.error('Error creating game:', error);
             setSuccessMessage('Something went wrong. Game was not added!');
@@ -107,7 +112,8 @@ function Delete() {
             games={videogames} 
             handleChange={handleChange} 
             handleSubmit={handleSubmit} 
-            selection={selection}/>
+            selection={selection}
+            successMessage={successMessage}/>
     )
 }
 

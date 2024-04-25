@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import createGame from '@controller/postController';
+import {createGame} from '@controller/postController';
 function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
     return (
         <div className='formContainer'>
@@ -87,7 +87,7 @@ function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
                 <br />
                 <br />
                 <button type="submit">Submit</button>
-                {successMessage && <p>{successMessage}</p>}
+                {successMessage && <p style={{marginLeft:'30px'}}>{successMessage}</p>}
 
             </form>
 
