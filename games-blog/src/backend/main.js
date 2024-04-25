@@ -71,14 +71,17 @@ app.post('/posts', async (req, res) => {
 app.put('/posts/:postId', async (req, res) => {
   try {
     const { postId } = req.params
-    const { title, gameDescription } = req.body
-    const updatedPost = await updatePostByID(postId, title, gameDescription)
+    const {
+      title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures,
+    } = req.body
+    const updatedPost = await updatePostByID(postId, title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures)
     if (updatedPost) {
       res.status(200).json(updatedPost)
     } else {
       res.status(404).json({ error: 'Post not found' })
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Internal Server Error' })
   }
 })

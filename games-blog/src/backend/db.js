@@ -28,8 +28,10 @@ export async function getAllPosts() {
   return rows
 }
 
-export async function updatePostByID(id, title, gameDescription) {
-  await conn.query('UPDATE games SET title = ?, game_description = ? WHERE id = ?', [title, gameDescription, id])
+export async function updatePostByID(id, title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures) {
+  await conn.query(
+    'UPDATE games SET title = ?, game_description = ?, genre = ?, main_platform = ?, multiplayer_support = ?, online_Features = ? WHERE id = ?', 
+    [title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, id])
 
   const updatedRow = await getPostByID(id)
 
