@@ -41,12 +41,6 @@ body {
     overflow-y: hidden;
 }
 
-/* imgIconCSS */
-.clickableIcon {
-    margin: 10px;
-    width: 60px;
-}
-
 /* gamesContainerCSS */
 .gamesContainer {
     display: grid;
