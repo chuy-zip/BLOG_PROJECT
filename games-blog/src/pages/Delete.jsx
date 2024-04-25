@@ -73,7 +73,6 @@ function Delete() {
 
     useEffect(() => {
         getAllGames(setVideogames, setIsEmpty, setError, setLoading);
-        console.log(videogames)
     }, []);
 
     useEffect(() => {

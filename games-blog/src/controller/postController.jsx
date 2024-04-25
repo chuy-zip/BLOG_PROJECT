@@ -45,6 +45,35 @@ async function createGame(title, gameDescription, genre, mainPlatform, multiplay
   }
 }
 
+async function updateGame(id, title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures) {
+  try {
+    const response = await fetch(`http://localhost:22107/posts/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        gameDescription,
+        genre,
+        mainPlatform,
+        multiplayerSupport,
+        onlineFeatures,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to create game');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error creating game:', error.message);
+    throw error;
+  }
+}
+
 async function deleteGame(id){
   try {
     const response = await fetch(`http://localhost:22107/posts/${id}`,{
@@ -64,4 +93,4 @@ async function deleteGame(id){
   }
 }
 
-export { getAllGames, createGame, deleteGame }
+export { getAllGames, createGame, updateGame, deleteGame }

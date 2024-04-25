@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {createGame} from '@controller/postController';
+import { createGame } from '@controller/postController';
 function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
     return (
         <div className='formContainer'>
