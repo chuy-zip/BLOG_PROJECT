@@ -1,9 +1,9 @@
 import { useState } from 'react';
-function LoginForm({formData, handleChange, handleSubmit, successMessage}){
+function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     return (
         <div className="formContainer">
             <form onSubmit={handleSubmit}>
-            <h1 style={{ textAlign: "center" }}>
+                <h1 style={{ textAlign: "center" }}>
                     Welcome! Enter your credentials
                 </h1>
 
@@ -29,10 +29,10 @@ function LoginForm({formData, handleChange, handleSubmit, successMessage}){
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    
+
                 />
-            
-            <br />
+
+                <br />
                 <br />
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <button type="submit">Login</button>
@@ -40,12 +40,12 @@ function LoginForm({formData, handleChange, handleSubmit, successMessage}){
                 </div>
 
             </form>
-            
+
         </div>
     )
 }
 
-function Login(){
+function Login() {
 
     const [successMessage, setSuccessMessage] = useState('')
     const [formData, setFormData] = useState({
@@ -67,7 +67,7 @@ function Login(){
             setSuccessMessage('Succesfully logged In')
             setFormData({
                 username: '',
-        password: '',
+                password: '',
             })
         } catch (error) {
             console.error("Error while logging in")
@@ -77,10 +77,10 @@ function Login(){
 
     return (
         <LoginForm
-        formData={formData}
-        handleChange={handleChange} 
-        handleSubmit={handleSubmit} 
-        successMessage={successMessage}/>
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            successMessage={successMessage} />
     )
 }
 
