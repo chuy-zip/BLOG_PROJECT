@@ -48,3 +48,19 @@ export async function deletePostByID(id) {
   await conn.query('DELETE FROM games WHERE id = ?', [id])
   return true // Return true if deletion was successful
 }
+
+export async function signInUser(username, password) {
+  await conn.query(
+    'INSERT INTO users (username, password) VALUES (?, ?)',
+    [username, password]
+  )
+}
+
+export async function userLogin(username, password){
+   const user = await conn.query(
+    'SELECT * FROM users WHERE username = ? AND password = ?',
+    [username, password]
+  )
+
+  return user
+}
