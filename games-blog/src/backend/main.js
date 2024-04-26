@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import fs from 'fs'
+
 import { createToken, validateToken } from './jwt.js'
 
 
@@ -19,6 +19,17 @@ function handleUnsupportedMethods(req, res, next) {
   return next()
 }
 
+function authenticateToken(req, res, next) {
+  const { authorization } = req.headers
+  const access_token = authorization.substring(7)
+
+  
+  if(validateToken(access_token)){
+    return next();
+  }
+   return res.status(401).json({ error: 'Unauthorized' });
+}
+
 app.use(express.json())
 app.use(cors({
   origin: '*',
@@ -28,6 +39,7 @@ app.use(cors({
 
 
 app.use(handleUnsupportedMethods)
+
 
 app.post('/login', async (req, res) => {
   try {
@@ -80,7 +92,7 @@ app.get('/posts/:postId', async (req, res) => {
   }
 })
 
-app.post('/posts', async (req, res) => {
+app.post('/posts', authenticateToken, async (req, res) => {
   try {
     const {
       title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures,
@@ -99,7 +111,7 @@ app.post('/posts', async (req, res) => {
   }
 })
 
-app.put('/posts/:postId', async (req, res) => {
+app.put('/posts/:postId', authenticateToken, async (req, res) => {
   try {
     const { postId } = req.params
     const {
@@ -116,7 +128,7 @@ app.put('/posts/:postId', async (req, res) => {
   }
 })
 
-app.delete('/posts/:postId', async (req, res) => {
+app.delete('/posts/:postId', authenticateToken, async (req, res) => {
   try {
     const { postId } = req.params
     const deletionSuccessful = await deletePostByID(postId)
