@@ -49,18 +49,26 @@ export async function deletePostByID(id) {
   return true // Return true if deletion was successful
 }
 
-export async function signInUser(username, password) {
-  await conn.query(
-    'INSERT INTO users (username, password) VALUES (?, ?)',
-    [username, password]
-  )
+export async function signInUser(username, email, password) {
+  try {
+      await conn.query(
+          'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+          [username, email, password]
+      );
+  } catch (error) {
+      // Handle duplicate entry error
+      if (error.code === 'ER_DUP_ENTRY') {
+          throw new Error('Username or email already exists');
+      }
+      throw error;
+  }
 }
 
 export async function userLogin(username, password){
-   const user = await conn.query(
+   const [user] = await conn.query(
     'SELECT * FROM users WHERE username = ? AND password = ?',
     [username, password]
   )
 
-  return user
+  return user[0]
 }
