@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { createGame } from '@controller/postController';
+
+import useToken from '@hooks/useToken';
+
 function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
     return (
         <div className='formContainer'>
@@ -86,8 +89,10 @@ function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
 
                 <br />
                 <br />
-                <button type="submit">Submit</button>
-                {successMessage && <p style={{marginLeft:'30px'}}>{successMessage}</p>}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <button type="submit">Create</button>
+                    {successMessage && <p style={{ marginLeft: '10px' }}>{successMessage}</p>}
+                </div>
 
             </form>
 
@@ -105,7 +110,7 @@ function Create() {
         multiplayerSupport: 'true',
         onlineFeatures: 'true',
     });
-
+    const { token } = useToken() 
     const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
@@ -118,13 +123,15 @@ function Create() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log("my token: ", token)
             const response = await createGame(
                 formData.title,
                 formData.description,
                 formData.genre,
                 formData.platform,
                 formData.multiplayerSupport === 'true', // Convert string to boolean
-                formData.onlineFeatures === 'true' // Convert string to boolean
+                formData.onlineFeatures === 'true', // Convert string to boolean
+                token
             );
             console.log('Game created:', response);
             setSuccessMessage('Successfully added game!');
@@ -151,7 +158,6 @@ function Create() {
                 handleSubmit={handleSubmit}
                 formData={formData}
                 successMessage={successMessage}/>
-
         </div>
     );
 }

@@ -16,12 +16,13 @@ async function getAllGames(setVideogames, setIsEmpty, setError, setLoading) {
   }
 }
 
-async function createGame(title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures) {
+async function createGame(title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) {
   try {
     const response = await fetch('http://localhost:22107/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify({
         title,
@@ -45,12 +46,13 @@ async function createGame(title, gameDescription, genre, mainPlatform, multiplay
   }
 }
 
-async function updateGame(id, title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures) {
+async function updateGame(id, title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) {
   try {
     const response = await fetch(`http://localhost:22107/posts/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify({
         title,
@@ -74,12 +76,13 @@ async function updateGame(id, title, gameDescription, genre, mainPlatform, multi
   }
 }
 
-async function deleteGame(id){
+async function deleteGame(id, token){
   try {
     const response = await fetch(`http://localhost:22107/posts/${id}`,{
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       }
     })
 

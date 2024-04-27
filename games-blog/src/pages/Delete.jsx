@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
+import useToken from '@hooks/useToken';
+
 import { getAllGames, deleteGame } from '@controller/postController.jsx';
+
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
@@ -55,6 +58,7 @@ function Delete() {
     const [isEmpty, setIsEmpty] = useState(false);
     const [selection, setSelection] = useState();
     const [successMessage, setSuccessMessage] = useState('');
+    const { token } = useToken() 
 
     const handleChange = (e) => {
         setSelection(e.target.value);
@@ -63,7 +67,7 @@ function Delete() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            deleteGame(selection)
+            deleteGame(selection, token)
             setSuccessMessage('Succesfully deleted game')
             getAllGames(setVideogames, setIsEmpty, setError, setLoading);
         } catch (error) {

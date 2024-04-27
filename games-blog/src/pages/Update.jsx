@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import useToken from '@hooks/useToken';
+
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
+
 import { getAllGames, updateGame } from '@controller/postController';
 
 function UpdateForm({ games, handleSelectionChange, handleChange, handleSubmit, selection, successMessage, formData }) {
@@ -133,6 +136,8 @@ function Update() {
     const [isEmpty, setIsEmpty] = useState(false);
     const [selection, setSelection] = useState();
     const [successMessage, setSuccessMessage] = useState('');
+    const { token } = useToken() 
+
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -163,7 +168,8 @@ function Update() {
                 formData.genre,
                 formData.platform,
                 formData.multiplayerSupport === 'true', // Convert string to boolean
-                formData.onlineFeatures === 'true' // Convert string to boolean
+                formData.onlineFeatures === 'true', // Convert string to boolean
+                token
             );
             console.log('Game Updated:', response);
             setSuccessMessage('Successfully updated game!');
