@@ -1,5 +1,8 @@
 import useNavigate from '@hooks/useNavigate'
+import useToken from '@hooks/useToken';
+
 import Nav from '@components/Nav'
+
 import Home from '@pages/Home';
 import Login from '@pages/Login';
 import Create from '@pages/Create';
@@ -18,7 +21,7 @@ const routes = {
     },
     '/create': {
         component: Create,
-        requiresAuth: false
+        requiresAuth: true
     },
     '/update': {
         component: Update,
@@ -30,18 +33,24 @@ const routes = {
     },
     '/logout': {
         component: Logout,
-        requiresAuth: true
+        requiresAuth: false
     },
     
 }
 
 function Router() {
+    
     const { page } = useNavigate()
+    const { token } = useToken() 
 
     let CurrentPage = () => <h1>404 Página no encontrada</h1>
 
     if (routes[page]) {
-        CurrentPage = routes[page].component
+        if(routes[page].requiresAuth && !token){
+            CurrentPage = Login
+        } else {
+            CurrentPage = routes[page].component
+        }
     }
 
     return (
