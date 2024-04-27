@@ -1,4 +1,10 @@
 import { useState } from 'react';
+
+import useToken from '@hooks/useToken';
+import useNavigate from '@hooks/useNavigate';
+
+import { getLoginToken } from '@controller/userController';
+
 function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     return (
         <div className="formContainer">
@@ -46,7 +52,8 @@ function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
 }
 
 function Login() {
-
+    const { setToken } = useToken()
+    const { navigate } = useNavigate()
     const [successMessage, setSuccessMessage] = useState('')
     const [formData, setFormData] = useState({
         username: '',
@@ -63,12 +70,20 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(formData)
-            setSuccessMessage('Succesfully logged In')
-            setFormData({
-                username: '',
-                password: '',
-            })
+            const token = await getLoginToken(formData.username, formData.password)
+
+            if (token) {
+                console.log('token: ', token)
+                setToken(token)
+                navigate('/')
+                window.location.replace("#/");
+
+                setSuccessMessage('Succesfully logged In')
+                setFormData({
+                    username: '',
+                    password: '',
+                })
+            }
         } catch (error) {
             console.error("Error while logging in")
             setSuccessMessage("Something went wrong. Could not log in")

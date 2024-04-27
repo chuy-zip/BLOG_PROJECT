@@ -6,8 +6,6 @@ import Create from '@pages/Create';
 import Update from '@pages/Update'; 
 import Delete from '@pages/Delete';
 
-
-
 const routes = {
     '/': {
         component: Home,

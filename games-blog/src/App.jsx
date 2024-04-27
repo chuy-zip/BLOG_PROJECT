@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import { NavigationProvider } from '@hooks/useNavigate'
+import { TokenProvider } from './hooks/useToken'
 import Router from './router'
 
 function App() {
 
   return (
-    <NavigationProvider>
-      <Router />
-    </NavigationProvider>
-    
+
+    <TokenProvider>
+      <NavigationProvider>
+        <Router />
+      </NavigationProvider>
+    </TokenProvider>
+
+
   )
 }
 
