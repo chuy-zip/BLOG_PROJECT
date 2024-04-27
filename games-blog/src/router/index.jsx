@@ -5,6 +5,7 @@ import Login from '@pages/Login';
 import Create from '@pages/Create';
 import Update from '@pages/Update'; 
 import Delete from '@pages/Delete';
+import Logout from '@pages/Logout';
 
 const routes = {
     '/': {
@@ -21,11 +22,15 @@ const routes = {
     },
     '/update': {
         component: Update,
-        requiresAuth: false
+        requiresAuth: true
     },
     '/delete': {
         component: Delete,
-        requiresAuth: false
+        requiresAuth: true
+    },
+    '/logout': {
+        component: Logout,
+        requiresAuth: true
     },
     
 }
