@@ -1,17 +1,18 @@
 import { useEffect } from 'react'
 import useNavigate from "@hooks/useNavigate"
+import useToken from '@hooks/useToken'
 
 const Logout = () => {
     const { navigate } = useNavigate()
+    const { setToken } = useToken()
 
     useEffect(() => {
         localStorage.clear()
-
+        setToken(null)
         setTimeout(() => {
             navigate('/')
             window.location.replace("#/");
-            window.location.reload();
-
+            
         }, 1500)
     }, [])
 
