@@ -1,10 +1,12 @@
 import '@style/Home.css'
+import { useState, useEffect } from 'react'
+
 import GameCard from '@components/GameCard.jsx'
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
-import { useState, useEffect } from 'react'
-import { getAllGames } from '@controller/postController.jsx';
+
+import useApi from '@hooks/useApi';
 
 function Games({ games }) {
     return (
@@ -24,6 +26,7 @@ function Games({ games }) {
 }
 
 function Home() {
+    const { getGames } = useApi()
     const [videogames, setVideogames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -31,7 +34,7 @@ function Home() {
 
 
     useEffect(() => {
-        getAllGames(setVideogames, setIsEmpty, setError, setLoading);
+        getGames(setVideogames, setIsEmpty, setError, setLoading);
     }, []);
 
     if (loading) {

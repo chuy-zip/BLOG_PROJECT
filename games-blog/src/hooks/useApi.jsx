@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, Children } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 
 import { getAllGames, createGame, updateGame, deleteGame } from '@controller/postController'
 
@@ -9,12 +9,10 @@ const ApiContext = createContext({ games: [], useApi: () => { } })
 const ApiProvider = ({ children }) => {
     const [games, setGames] = useState([]);
 
-    useEffect(() => {
-        getGames()
-    }, [])
+    
 
-    const getGames = async () => {
-        const data = await getAllGames()
+    const getGames = async (setVideogames, setIsEmpty, setError, setLoading) => {
+        const data = await getAllGames(setVideogames, setIsEmpty, setError, setLoading)
         setGames(data)
     }
 
@@ -41,8 +39,7 @@ const ApiProvider = ({ children }) => {
     return (
         <ApiContext.Provider 
             value={{
-                games,
-                setGames,
+                getGames,
                 addGame,
                 changeGame,
                 removeGame,

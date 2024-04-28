@@ -22,7 +22,6 @@ function handleUnsupportedMethods(req, res, next) {
 function authenticateToken(req, res, next) {
   const { authorization } = req.headers
   const access_token = authorization.substring(7)
-  console.log(access_token)
   
   if(validateToken(access_token)){
     return next();

@@ -11,8 +11,7 @@ function App() {
         <Router />
       </NavigationProvider>
     </TokenProvider>
-
-
+    
   )
 }
 
