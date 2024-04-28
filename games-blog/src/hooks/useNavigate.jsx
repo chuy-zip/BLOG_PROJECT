@@ -1,6 +1,11 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'; 
 
 const NavigationContext = createContext({ page: '/', navigate: () => { } })
+
+NavigationProvider.propTypes = {
+    children: PropTypes.node // Define PropTypes for children
+};
 
 const NavigationProvider = ({ children }) => {
     const path = window.location.hash.substring(1)

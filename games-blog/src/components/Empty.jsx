@@ -1,7 +1,7 @@
 function Empty() {
     return (
         <div className="stateContainer">
-            <h1>🌀 Currently we don't have recommended games</h1>
+            <h1>🌀 Currently we don&apos;t have recommended games</h1>
         </div>
     )
 }

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useNavigate from "@hooks/useNavigate"
 import Icon from "./Icon"
 import gitIcon from '@assets/gitIconDark.png'
@@ -21,7 +20,7 @@ const Nav = () => {
             <nav>
 
                 <h3 style={{ margin: '0px', marginTop: '10px', paddingLeft: '16px' }}>
-                    {isLoggedIn ? (<>{decodedToken.username}'s </>):(<> </>)}Videogame recommendations</h3>
+                    {isLoggedIn ? (<>{decodedToken.username}&apos;s </>):(<> </>)}Videogame recommendations</h3>
 
                 <a href="#/" onClick={() => navigate('/')}>Home</a>
 

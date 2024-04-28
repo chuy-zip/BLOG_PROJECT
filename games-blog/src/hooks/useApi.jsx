@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react'
+import PropTypes from 'prop-types'; 
 
 import { getAllGames, createGame, updateGame, deleteGame } from '@controller/postController'
 
@@ -6,10 +7,14 @@ import { getLoginToken, signInUser } from '@controller/userController'
 
 const ApiContext = createContext({ games: [], useApi: () => { } })
 
+ApiProvider.propTypes = {
+    children: PropTypes.node 
+};
+
 const ApiProvider = ({ children }) => {
 
     const getGames = async (setVideogames, setIsEmpty, setError, setLoading) => {
-        const data = await getAllGames(setVideogames, setIsEmpty, setError, setLoading)
+        await getAllGames(setVideogames, setIsEmpty, setError, setLoading)
     }
 
     const addGame = async (title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) => {

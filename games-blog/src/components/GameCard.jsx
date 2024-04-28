@@ -1,3 +1,20 @@
+import PropTypes from 'prop-types';
+
+GameCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    gameDescription: PropTypes.string.isRequired,
+    mainPlatform: PropTypes.string.isRequired,
+    multiplayerSupport: PropTypes.number.isRequired,
+    onlineFeatures: PropTypes.number.isRequired
+};
+
+GameProperties.propTypes = {
+    mainPlatform: PropTypes.string.isRequired,
+    multiplayerSupport: PropTypes.number.isRequired,
+    onlineFeatures: PropTypes.number.isRequired
+}
+
 function GameProperties({mainPlatform, multiplayerSupport, onlineFeatures}){
 
     return (

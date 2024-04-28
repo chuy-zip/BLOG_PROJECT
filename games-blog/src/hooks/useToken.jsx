@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react'
+import PropTypes from 'prop-types'; 
 
 function parseToken(token) {
     const base64Url = token.split('.')[1]
@@ -11,6 +12,10 @@ function parseToken(token) {
 }
 
 const TokenContext = createContext({ token: '', useToken: () => { } })
+
+TokenProvider.propTypes = {
+    children: PropTypes.node 
+};
 
 const TokenProvider = ({ children }) => {
     const [token, setToken] = useState(
