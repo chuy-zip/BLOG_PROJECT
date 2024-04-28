@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { createGame } from '@controller/postController';
 
+import useApi from '@hooks/useApi';
 import useToken from '@hooks/useToken';
 
 function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
@@ -110,6 +110,8 @@ function Create() {
         multiplayerSupport: 'true',
         onlineFeatures: 'true',
     });
+
+    const { addGame } = useApi()
     const { token } = useToken() 
     const [successMessage, setSuccessMessage] = useState('');
 
@@ -123,8 +125,7 @@ function Create() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("my token: ", token)
-            const response = await createGame(
+            const response = await addGame(
                 formData.title,
                 formData.description,
                 formData.genre,
@@ -133,7 +134,7 @@ function Create() {
                 formData.onlineFeatures === 'true', // Convert string to boolean
                 token
             );
-            console.log('Game created:', response);
+            
             setSuccessMessage('Successfully added game!');
             // Optionally, reset form fields after successful submission
             setFormData({

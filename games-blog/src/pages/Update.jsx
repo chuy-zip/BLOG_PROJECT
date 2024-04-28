@@ -5,7 +5,7 @@ import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
 
-import { getAllGames, updateGame } from '@controller/postController';
+import useApi from '@hooks/useApi';
 
 function UpdateForm({ games, handleSelectionChange, handleChange, handleSubmit, selection, successMessage, formData }) {
     return (
@@ -137,6 +137,7 @@ function Update() {
     const [selection, setSelection] = useState();
     const [successMessage, setSuccessMessage] = useState('');
     const { token } = useToken() 
+    const { getGames, changeGame} = useApi()
 
     const [formData, setFormData] = useState({
         title: '',
@@ -161,7 +162,7 @@ function Update() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await updateGame(
+            const response = await changeGame(
                 selection,
                 formData.title,
                 formData.description,
@@ -171,10 +172,9 @@ function Update() {
                 formData.onlineFeatures === 'true', // Convert string to boolean
                 token
             );
-            console.log('Game Updated:', response);
             setSuccessMessage('Successfully updated game!');
             // Optionally, reset form fields after successful submission
-            getAllGames(setVideogames, setIsEmpty, setError, setLoading)
+            getGames(setVideogames, setIsEmpty, setError, setLoading)
 
         } catch (error) {
             console.error('Error creating game:', error);
@@ -184,7 +184,7 @@ function Update() {
     };
 
     useEffect(() => {
-        getAllGames(setVideogames, setIsEmpty, setError, setLoading);
+        getGames(setVideogames, setIsEmpty, setError, setLoading);
 
     }, []);
 
