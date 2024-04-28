@@ -181,6 +181,17 @@ npm install cors
 npm install crypto-js
 ```
 
+####  Install dotenv for using environment variables
+```sh
+npm install dotenv
+```
+
+####  Install jsonwebtoken to use tokens for authentications and security
+```sh
+npm install jsonwebtoken
+```
+
+ 
 
 
 
