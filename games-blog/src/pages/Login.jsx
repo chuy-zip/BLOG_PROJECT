@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useToken from '@hooks/useToken';
 import useNavigate from '@hooks/useNavigate';
 
-import { getLoginToken } from '@controller/userController';
+import useApi from '@hooks/useApi';
 
 function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     return (
@@ -52,6 +52,7 @@ function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
 }
 
 function Login() {
+    const { login } = useApi()
     const { setToken } = useToken()
     const { navigate } = useNavigate()
     const [successMessage, setSuccessMessage] = useState('')
@@ -70,7 +71,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = await getLoginToken(formData.username, formData.password)
+            const token = await login(formData.username, formData.password)
 
             if (token) {
                 setToken(token)

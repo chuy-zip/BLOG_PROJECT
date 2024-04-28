@@ -1,9 +1,7 @@
 import { useState } from 'react';
 
-import useToken from '@hooks/useToken';
+import useApi from '@hooks/useApi';
 import useNavigate from '@hooks/useNavigate';
-
-import { signInUser } from '@controller/userController';
 
 function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     return (
@@ -79,6 +77,7 @@ function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
 }
 
 function SignIn() {
+    const { signIn } = useApi()
     const { navigate } = useNavigate()
     const [successMessage, setSuccessMessage] = useState('')
     const [formData, setFormData] = useState({
@@ -100,10 +99,10 @@ function SignIn() {
         try {
 
             if (formData.password === formData.confirmPassword) {
-                const signedIn = await signInUser(formData.username, formData.email, formData.password)
+                const signedIn = await signIn(formData.username, formData.email, formData.password)
 
                 if (signedIn) {
-                    console.log(formData)
+                    alert("Succesfully signed in, go forward with the login")
 
                     setSuccessMessage('Succesfully Signed In')
                     setFormData({

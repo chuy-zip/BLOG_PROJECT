@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
 
 import { getAllGames, createGame, updateGame, deleteGame } from '@controller/postController'
 
@@ -7,13 +7,9 @@ import { getLoginToken, signInUser } from '@controller/userController'
 const ApiContext = createContext({ games: [], useApi: () => { } })
 
 const ApiProvider = ({ children }) => {
-    const [games, setGames] = useState([]);
-
-    
 
     const getGames = async (setVideogames, setIsEmpty, setError, setLoading) => {
         const data = await getAllGames(setVideogames, setIsEmpty, setError, setLoading)
-        setGames(data)
     }
 
     const addGame = async (title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) => {
