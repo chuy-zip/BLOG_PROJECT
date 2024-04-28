@@ -81,7 +81,7 @@ button:focus-visible {
   background: #223f61;
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 512px) {
   .formContainer {
     margin-top: 200px;
   }

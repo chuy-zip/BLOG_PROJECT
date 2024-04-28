@@ -7,8 +7,8 @@ import useToken from '@hooks/useToken';
 import '@style/Nav.css'
 
 const Nav = () => {
-    const { page, navigate } = useNavigate()
-    const { token, isLoggedIn, getRawToken } = useToken()
+    const { navigate } = useNavigate()
+    const { isLoggedIn, getRawToken } = useToken()
 
     let decodedToken = {}
     if (isLoggedIn) {

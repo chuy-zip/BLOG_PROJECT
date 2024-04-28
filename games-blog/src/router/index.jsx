@@ -52,6 +52,7 @@ function Router() {
     if (routes[page]) {
         if(routes[page].requiresAuth && !token){
             CurrentPage = Login
+            window.location.replace("#/login");
         } else {
             CurrentPage = routes[page].component
         }

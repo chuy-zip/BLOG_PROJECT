@@ -72,11 +72,18 @@ body {
     color: #000000;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 512px) {
     .gamesContainer {
-        row-gap: 30px;
+        margin-top: 170px;
     }
 }
+
+@media (max-width: 400px) {
+    .gamesContainer {
+        width: 90%;
+    }
+}
+
 
 /* gameCardContainerCSS */
 .gameCardContainer {

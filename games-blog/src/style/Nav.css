@@ -10,13 +10,13 @@ nav {
     font-size: 20px;;
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 512px) {
   nav {
       height: 150px; /* Adjust height for smaller screens */
   }
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 455px) {
   nav {
       height: 180px; /* Adjust height for smaller screens */
   }
@@ -36,13 +36,13 @@ nav {
   z-index: 100;
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 512px) {
   .headerContainer {
       height: 150px;
   }
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 455px) {
   .headerContainer {
       height: 180px;
   }
@@ -71,9 +71,9 @@ a:hover {
   position: absolute;
 }
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 455px) {
   .clickableIcon {
-    bottom: 10px; 
+    bottom: 50px; 
   }
 }
 
