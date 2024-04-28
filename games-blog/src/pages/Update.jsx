@@ -1,11 +1,24 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+
 import useToken from '@hooks/useToken';
+import useApi from '@hooks/useApi';
 
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
 
-import useApi from '@hooks/useApi';
+
+
+UpdateForm.propTypes = {
+    games: PropTypes.array.isRequired, 
+    handleSelectionChange: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired, 
+    handleSubmit: PropTypes.func.isRequired, 
+    selection: PropTypes.string, 
+    successMessage: PropTypes.string, 
+    formData: PropTypes.object.isRequired, 
+};
 
 function UpdateForm({ games, handleSelectionChange, handleChange, handleSubmit, selection, successMessage, formData }) {
     return (
@@ -162,7 +175,7 @@ function Update() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await changeGame(
+            await changeGame(
                 selection,
                 formData.title,
                 formData.description,

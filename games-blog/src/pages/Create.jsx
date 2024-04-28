@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import useApi from '@hooks/useApi';
 import useToken from '@hooks/useToken';
+
+CreateForm.propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    formData: PropTypes.object.isRequired,
+    successMessage: PropTypes.string.isRequired
+};
 
 function CreateForm({ handleChange, handleSubmit, formData, successMessage  }) {
     return (
@@ -125,7 +133,7 @@ function Create() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await addGame(
+            await addGame(
                 formData.title,
                 formData.description,
                 formData.genre,

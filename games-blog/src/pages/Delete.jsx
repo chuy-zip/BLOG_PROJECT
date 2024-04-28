@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
 
 import useToken from '@hooks/useToken';
 import useApi from '@hooks/useApi';
@@ -6,6 +7,14 @@ import useApi from '@hooks/useApi';
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
+
+DeleteForm.propTypes = {
+    games: PropTypes.array.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    selection: PropTypes.string,
+    successMessage: PropTypes.string.isRequired
+};
 
 function DeleteForm({ games, handleChange, handleSubmit, selection, successMessage }) {
     return (

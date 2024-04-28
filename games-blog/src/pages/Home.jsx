@@ -1,5 +1,6 @@
 import '@style/Home.css'
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
 
 import GameCard from '@components/GameCard.jsx'
 import Empty from '@components/Empty';
@@ -7,6 +8,10 @@ import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
 
 import useApi from '@hooks/useApi';
+
+Games.propTypes = {
+    games: PropTypes.array.isRequired,
+};
 
 function Games({ games }) {
     return (

@@ -1,9 +1,17 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import useToken from '@hooks/useToken';
 import useNavigate from '@hooks/useNavigate';
 
 import useApi from '@hooks/useApi';
+
+LoginForm.propTypes = {
+    formData: PropTypes.object.isRequired, 
+    handleChange: PropTypes.func.isRequired, 
+    handleSubmit: PropTypes.func.isRequired,
+    successMessage: PropTypes.string, 
+};
 
 function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     return (
