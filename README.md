@@ -36,6 +36,8 @@ To put it as simple as possible, I broke down the functionallity of the project 
 ## Usage 
 Running this project is fairly simple. The only requirements are to have Node.js installed and also Docker in your computer, in order to lift the containers with the configuration I made with docker compose. Once you have installed them, have cloned the repository and opened the project folder, you only have to run the following commands:
 
+Ther first and **Most important thing** is to change the names of the files **.env.EXAMPLE** and **docker-compose.EXAMPLE.yml** to .env and docker-compose.yml. Also, you will need to manually add a string to the .env file. 
+
 Move to the games-blog directory
 ```
 cd games-blog
