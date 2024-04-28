@@ -3,7 +3,7 @@ import { useState } from 'react';
 import useToken from '@hooks/useToken';
 import useNavigate from '@hooks/useNavigate';
 
-import { getLoginToken } from '@controller/userController';
+import { signInUser } from '@controller/userController';
 
 function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     return (
@@ -26,6 +26,19 @@ function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
                 />
 
                 <br />
+                <label htmlFor="email">email:</label>
+                <br />
+                <input
+                    className="inputStyle"
+                    type="text"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+
+                />
+
+                <br />
                 <label htmlFor="password">Password:</label>
                 <br />
                 <input
@@ -39,9 +52,23 @@ function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
                 />
 
                 <br />
+                <label htmlFor="confirmPassword">Confirm Password:</label>
+                <br />
+                <input
+                    className="inputStyle"
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+
+                />
+
+
+                <br />
                 <br />
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <button type="submit">Login</button>
+                    <button type="submit">Sign In</button>
                     {successMessage && <p style={{ marginLeft: '10px' }}>{successMessage}</p>}
                 </div>
 
@@ -51,13 +78,14 @@ function LoginForm({ formData, handleChange, handleSubmit, successMessage }) {
     )
 }
 
-function Login() {
-    const { setToken } = useToken()
+function SignIn() {
     const { navigate } = useNavigate()
     const [successMessage, setSuccessMessage] = useState('')
     const [formData, setFormData] = useState({
         username: '',
+        email: '',
         password: '',
+        confirmPassword: '',
     });
 
     const handleChange = (e) => {
@@ -70,22 +98,32 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = await getLoginToken(formData.username, formData.password)
 
-            if (token) {
-                setToken(token)
-                navigate('/')
-                window.location.replace("#/");
+            if (formData.password === formData.confirmPassword) {
+                const signedIn = await signInUser(formData.username, formData.email, formData.password)
 
-                setSuccessMessage('Succesfully logged In')
-                setFormData({
-                    username: '',
-                    password: '',
-                })
+                if (signedIn) {
+                    console.log(formData)
+
+                    setSuccessMessage('Succesfully Signed In')
+                    setFormData({
+                        username: '',
+                        email: '',
+                        password: '',
+                        confirmPassword: '',
+                    })
+
+                    navigate('/login')
+                    window.location.replace("#/login");
+                }
+
+            } else {
+                setSuccessMessage("Passwords don't match")
             }
+
         } catch (error) {
-            console.error("Error while logging in")
-            setSuccessMessage("Something went wrong. Could not log in")
+            console.error("Error while signin in")
+            setSuccessMessage("Something went wrong. Could Sign in")
         }
     }
 
@@ -98,4 +136,4 @@ function Login() {
     )
 }
 
-export default Login
+export default SignIn

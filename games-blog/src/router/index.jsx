@@ -9,6 +9,7 @@ import Create from '@pages/Create';
 import Update from '@pages/Update'; 
 import Delete from '@pages/Delete';
 import Logout from '@pages/Logout';
+import SignIn from '@pages/SignIn';
 
 const routes = {
     '/': {
@@ -35,7 +36,10 @@ const routes = {
         component: Logout,
         requiresAuth: false
     },
-    
+    '/signIn': {
+        component: SignIn,
+        requiresAuth: false
+    },
 }
 
 function Router() {

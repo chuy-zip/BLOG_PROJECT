@@ -10,11 +10,6 @@ const Nav = () => {
     const { page, navigate } = useNavigate()
     const { token, isLoggedIn, getRawToken } = useToken()
 
-    useEffect(() => {
-        // This function will be called whenever the isLoggedIn state changes
-        console.log("isLoggedIn changed:", isLoggedIn);
-    }, [token]); // Only re-run the effect if isLoggedIn changes
-
     let decodedToken = {}
     if (isLoggedIn) {
         decodedToken = getRawToken()
@@ -45,6 +40,7 @@ const Nav = () => {
                     ) : (
                         <>
                             <a href="#/login" onClick={() => navigate('/login')}>Login</a>
+                            <a href="#/signIn" onClick={() => navigate('/signIn')}>Sign In</a>
 
                         </>
 

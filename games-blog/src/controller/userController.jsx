@@ -9,7 +9,7 @@ async function getLoginToken(username, password) {
             },
             body: JSON.stringify({
                 username: username,
-                password: CryptoJS.MD5(password).toString()
+                password: CryptoJS.SHA256(password).toString()
             })
         })
 
@@ -19,7 +19,6 @@ async function getLoginToken(username, password) {
         }
 
         const { access_token } = await response.json()
-        console.log("acces token", access_token)
         return access_token
 
     } catch (error) {
@@ -28,4 +27,31 @@ async function getLoginToken(username, password) {
     }
 }
 
-export { getLoginToken }
+async function signInUser(username, email, password) {
+    try {
+        const response = await fetch('http://localhost:22107/signIn', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                password: CryptoJS.SHA256(password).toString()
+            })
+        })
+
+        if (!response.ok) {
+            alert("User already exists")
+            return false;
+        }
+        
+        return true
+
+    } catch (error) {
+        console.error('Error authenticating', error.message);
+        throw error;
+    }
+}
+
+export { getLoginToken, signInUser }
