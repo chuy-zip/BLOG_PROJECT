@@ -1,8 +1,14 @@
-async function getAllGames(setVideogames, setIsEmpty, setError, setLoading) {
+async function getAllGames(setVideogames, setIsEmpty, setError, setLoading, token) {
   try {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    let gameList = await fetch('http://localhost:22107/posts');
+    let gameList = await fetch('http://localhost:22107/posts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    });
     if (!gameList.ok) {
       throw new Error('Failed to fetch data');
     }

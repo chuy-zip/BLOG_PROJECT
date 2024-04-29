@@ -79,7 +79,7 @@ function Delete() {
         try {
             removeGame(selection, token)
             setSuccessMessage('Succesfully deleted game')
-            getGames(setVideogames, setIsEmpty, setError, setLoading);
+            getGames(setVideogames, setIsEmpty, setError, setLoading, token);
         } catch (error) {
             console.error('Error creating game:', error);
             setSuccessMessage('Something went wrong. Game was not added!');
@@ -88,7 +88,7 @@ function Delete() {
 
 
     useEffect(() => {
-        getGames(setVideogames, setIsEmpty, setError, setLoading);
+        getGames(setVideogames, setIsEmpty, setError, setLoading, token);
     }, []);
 
     useEffect(() => {

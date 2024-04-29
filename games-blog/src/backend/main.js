@@ -21,6 +21,7 @@ function handleUnsupportedMethods(req, res, next) {
 
 function authenticateToken(req, res, next) {
   const { authorization } = req.headers
+  
   const access_token = authorization.substring(7)
   
   if(validateToken(access_token)){
@@ -68,16 +69,7 @@ app.post('/signIn', async (req, res) => {
   }
 })
 
-app.get('/posts', async (req, res) => {
-  try {
-    const posts = await getAllPosts()
-    res.status(200).json(posts)
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
-app.get('/posts/:postId', async (req, res) => {
+app.get('/posts/:postId', authenticateToken, async (req, res) => {
   try {
     const { postId } = req.params
     const post = await getPostByID(postId)
@@ -90,6 +82,16 @@ app.get('/posts/:postId', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' })
   }
 })
+
+app.get('/posts', authenticateToken, async (req, res) => {
+  try {
+    const posts = await getAllPosts()
+    res.status(200).json(posts)
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
 
 app.post('/posts', authenticateToken, async (req, res) => {
   try {

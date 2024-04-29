@@ -187,7 +187,7 @@ function Update() {
             );
             setSuccessMessage('Successfully updated game!');
             // Optionally, reset form fields after successful submission
-            getGames(setVideogames, setIsEmpty, setError, setLoading)
+            getGames(setVideogames, setIsEmpty, setError, setLoading, token)
 
         } catch (error) {
             console.error('Error creating game:', error);
@@ -197,7 +197,7 @@ function Update() {
     };
 
     useEffect(() => {
-        getGames(setVideogames, setIsEmpty, setError, setLoading);
+        getGames(setVideogames, setIsEmpty, setError, setLoading, token);
 
     }, []);
 

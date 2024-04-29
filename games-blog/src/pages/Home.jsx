@@ -8,6 +8,7 @@ import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
 
 import useApi from '@hooks/useApi';
+import useToken from '@hooks/useToken';
 
 Games.propTypes = {
     games: PropTypes.array.isRequired,
@@ -31,7 +32,8 @@ function Games({ games }) {
 }
 
 function Home() {
-    const { getGames } = useApi()
+    const { getGames } = useApi();
+    const { token } = useToken();
     const [videogames, setVideogames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -39,7 +41,7 @@ function Home() {
 
 
     useEffect(() => {
-        getGames(setVideogames, setIsEmpty, setError, setLoading);
+        getGames(setVideogames, setIsEmpty, setError, setLoading, token);
     }, []);
 
     if (loading) {
