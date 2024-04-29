@@ -15,7 +15,7 @@ UpdateForm.propTypes = {
     handleSelectionChange: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired, 
     handleSubmit: PropTypes.func.isRequired, 
-    selection: PropTypes.string, 
+    selection: PropTypes.number, 
     successMessage: PropTypes.string, 
     formData: PropTypes.object.isRequired, 
 };

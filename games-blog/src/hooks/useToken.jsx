@@ -13,10 +13,6 @@ function parseToken(token) {
 
 const TokenContext = createContext({ token: '', useToken: () => { } })
 
-TokenProvider.propTypes = {
-    children: PropTypes.node 
-};
-
 const TokenProvider = ({ children }) => {
     const [token, setToken] = useState(
         localStorage.getItem('access_token') || null
@@ -40,6 +36,11 @@ const TokenProvider = ({ children }) => {
         </TokenContext.Provider>
     )
 }
+
+TokenProvider.propTypes = {
+    children: PropTypes.node 
+};
+
 
 const useToken = () => {
     return useContext(TokenContext)

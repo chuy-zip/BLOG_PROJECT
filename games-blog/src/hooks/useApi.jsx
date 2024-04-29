@@ -7,10 +7,6 @@ import { getLoginToken, signInUser } from '@controller/userController'
 
 const ApiContext = createContext({ games: [], useApi: () => { } })
 
-ApiProvider.propTypes = {
-    children: PropTypes.node 
-};
-
 const ApiProvider = ({ children }) => {
 
     const getGames = async (setVideogames, setIsEmpty, setError, setLoading) => {
@@ -52,6 +48,10 @@ const ApiProvider = ({ children }) => {
         </ApiContext.Provider>
     )
 }
+
+ApiProvider.propTypes = {
+    children: PropTypes.node 
+};
 
 const useApi = () => {
     return useContext(ApiContext)
