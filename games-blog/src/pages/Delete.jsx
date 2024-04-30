@@ -8,6 +8,8 @@ import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
 
+import Auth from '@components/Auth';
+
 DeleteForm.propTypes = {
     games: PropTypes.array.isRequired,
     handleChange: PropTypes.func.isRequired,
