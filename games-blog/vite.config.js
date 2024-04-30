@@ -17,5 +17,5 @@ export default defineConfig({
       '@hooks': '/src/hooks'
     }
   },
-  base: '/proyecto/221007/games-blog/dist' // Set the base URL for your assets
+  base: '/proyecto/221007/games-blog/dist/' // Set the base URL for your assets
 });
