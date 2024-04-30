@@ -62,8 +62,9 @@ body {
 .stateContainer {
     margin: auto;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
     width: 70%;
     padding-top: 40px;
     margin-top: 100px;

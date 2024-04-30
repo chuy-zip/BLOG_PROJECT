@@ -6,6 +6,7 @@ import GameCard from '@components/GameCard.jsx'
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
 import NoResponse from '@components/NoResponse';
+import Auth from '@components/Auth';
 
 import useApi from '@hooks/useApi';
 import useToken from '@hooks/useToken';
@@ -38,10 +39,11 @@ function Home() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [isEmpty, setIsEmpty] = useState(false);
+    const [noAuth, setNoAuth] = useState(false)
 
 
     useEffect(() => {
-        getGames(setVideogames, setIsEmpty, setError, setLoading, token);
+        getGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token);
     }, []);
 
     if (loading) {
@@ -55,7 +57,7 @@ function Home() {
     if (error) {
         return (
             <div>
-                <NoResponse />
+                <NoResponse/>
             </div>
         );
     }
@@ -66,6 +68,15 @@ function Home() {
                 <Empty />
             </div>
         );
+    }
+
+    if(noAuth){
+        return (
+            <div>
+                <Auth/>
+            </div>
+        )
+
     }
 
     return (

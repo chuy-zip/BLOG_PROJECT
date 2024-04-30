@@ -1,4 +1,4 @@
-async function getAllGames(setVideogames, setIsEmpty, setError, setLoading, token) {
+async function getAllGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token) {
   try {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -10,11 +10,17 @@ async function getAllGames(setVideogames, setIsEmpty, setError, setLoading, toke
       }
     });
     if (!gameList.ok) {
-      throw new Error('Failed to fetch data');
+      if (gameList.status === 401){
+        setNoAuth(true)
+        return
+      } else {
+        throw new Error('Failed to fetch data');
+      }
     }
     let json_list = await gameList.json();
     setVideogames(json_list);
     setIsEmpty(json_list.length === 0);
+    setNoAuth(false)
   } catch (error) {
     setError(true);
   } finally {

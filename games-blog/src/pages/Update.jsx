@@ -149,8 +149,10 @@ function Update() {
     const [isEmpty, setIsEmpty] = useState(false);
     const [selection, setSelection] = useState();
     const [successMessage, setSuccessMessage] = useState('');
+    const [noAuth, setNoAuth] = useState(false)
     const { token } = useToken() 
     const { getGames, changeGame} = useApi()
+
 
     const [formData, setFormData] = useState({
         title: '',
@@ -187,7 +189,7 @@ function Update() {
             );
             setSuccessMessage('Successfully updated game!');
             // Optionally, reset form fields after successful submission
-            getGames(setVideogames, setIsEmpty, setError, setLoading, token)
+            getGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token)
 
         } catch (error) {
             console.error('Error creating game:', error);
@@ -197,7 +199,7 @@ function Update() {
     };
 
     useEffect(() => {
-        getGames(setVideogames, setIsEmpty, setError, setLoading, token);
+        getGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token);
 
     }, []);
 
@@ -249,6 +251,15 @@ function Update() {
                 <Empty />
             </div>
         );
+    }
+
+    if(noAuth){
+        return (
+            <div>
+                <Auth/>
+            </div>
+        )
+
     }
 
     return (

@@ -69,6 +69,7 @@ function Delete() {
     const [successMessage, setSuccessMessage] = useState('');
     const { token } = useToken() 
     const { getGames, removeGame} = useApi()
+    const [noAuth, setNoAuth] = useState(false)
 
     const handleChange = (e) => {
         setSelection(e.target.value);
@@ -79,7 +80,7 @@ function Delete() {
         try {
             removeGame(selection, token)
             setSuccessMessage('Succesfully deleted game')
-            getGames(setVideogames, setIsEmpty, setError, setLoading, token);
+            getGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token);
         } catch (error) {
             console.error('Error creating game:', error);
             setSuccessMessage('Something went wrong. Game was not added!');
@@ -88,7 +89,7 @@ function Delete() {
 
 
     useEffect(() => {
-        getGames(setVideogames, setIsEmpty, setError, setLoading, token);
+        getGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token);
     }, []);
 
     useEffect(() => {
@@ -120,6 +121,15 @@ function Delete() {
                 <Empty />
             </div>
         );
+    }
+
+    if(noAuth){
+        return (
+            <div>
+                <Auth/>
+            </div>
+        )
+
     }
 
     return (

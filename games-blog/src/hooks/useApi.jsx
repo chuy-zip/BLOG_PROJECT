@@ -9,8 +9,8 @@ const ApiContext = createContext({ games: [], useApi: () => { } })
 
 const ApiProvider = ({ children }) => {
 
-    const getGames = async (setVideogames, setIsEmpty, setError, setLoading, token) => {
-        await getAllGames(setVideogames, setIsEmpty, setError, setLoading, token)
+    const getGames = async (setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token) => {
+        await getAllGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token)
     }
 
     const addGame = async (title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) => {
