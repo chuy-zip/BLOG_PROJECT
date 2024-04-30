@@ -176,6 +176,10 @@ function Update() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!formData.title || !formData.description || !formData.genre) {
+            setSuccessMessage('Please fill in all fields.');
+            return;
+        }
         try {
             await changeGame(
                 selection,

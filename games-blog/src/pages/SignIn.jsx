@@ -104,6 +104,11 @@ function SignIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+            setSuccessMessage('Please fill in all fields.');
+            return;
+        }
         try {
 
             if (formData.password === formData.confirmPassword) {

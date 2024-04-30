@@ -78,6 +78,12 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!formData.username || !formData.password) {
+            setSuccessMessage('Please fill in all fields.');
+            return;
+        }
+        
         try {
             const token = await login(formData.username, formData.password)
 
