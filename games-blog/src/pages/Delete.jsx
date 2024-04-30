@@ -12,7 +12,7 @@ DeleteForm.propTypes = {
     games: PropTypes.array.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    selection: PropTypes.number,
+    selection: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), 
     successMessage: PropTypes.string.isRequired
 };
 

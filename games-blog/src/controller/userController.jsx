@@ -2,7 +2,7 @@ import CryptoJS from 'crypto-js';
 
 async function getLoginToken(username, password) {
     try {
-        const response = await fetch('http://localhost:22107/login', {
+        const response = await fetch('http://localhost:12107/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ async function getLoginToken(username, password) {
 
 async function signInUser(username, email, password) {
     try {
-        const response = await fetch('http://localhost:22107/signIn', {
+        const response = await fetch('http://localhost:12107/signIn', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

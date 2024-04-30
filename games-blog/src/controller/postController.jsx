@@ -2,7 +2,7 @@ async function getAllGames(setVideogames, setIsEmpty, setError, setLoading, setN
   try {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    let gameList = await fetch('http://localhost:22107/posts', {
+    let gameList = await fetch('http://localhost:12107/posts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ async function getAllGames(setVideogames, setIsEmpty, setError, setLoading, setN
 
 async function createGame(title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) {
   try {
-    const response = await fetch('http://localhost:22107/posts', {
+    const response = await fetch('http://localhost:12107/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ async function createGame(title, gameDescription, genre, mainPlatform, multiplay
 
 async function updateGame(id, title, gameDescription, genre, mainPlatform, multiplayerSupport, onlineFeatures, token) {
   try {
-    const response = await fetch(`http://localhost:22107/posts/${id}`, {
+    const response = await fetch(`http://localhost:12107/posts/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ async function updateGame(id, title, gameDescription, genre, mainPlatform, multi
 
 async function deleteGame(id, token){
   try {
-    const response = await fetch(`http://localhost:22107/posts/${id}`,{
+    const response = await fetch(`http://localhost:12107/posts/${id}`,{
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

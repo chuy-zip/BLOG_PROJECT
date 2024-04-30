@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: dockerfiles/app/Dockerfile
     ports:
-      - "22107:3000"
+      - "12107:3000"
     volumes:
       - .:/vite-project
       - /vite-project/node_modules

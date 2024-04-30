@@ -77,7 +77,7 @@ docker compose down -v
 ## Endpoints
 The app manages 5 different requests depending on the endpoint and the HTTP's request type. Feel free to test them with Postman, Hoppscotch, etc 
 
-**(NOTE: port must be 22107 as definied in the dcokerfiles)**. 
+**(NOTE: port must be 12107 as definied in the dcokerfiles)**. 
 
 These are the defined endpoints:
 
@@ -85,18 +85,18 @@ These are the defined endpoints:
 
 | HTTP Method | Endpoint                              | Description                                 |
 |-------------|---------------------------------------|---------------------------------------------|
-| POST        | http://localhost:22107/posts           | Adds a game to the database                 |
-| GET         | http://localhost:22107/posts           | Gets all the stored games on the database   |
-| GET         | http://localhost:22107/posts/:postId  | Gets a post with a specific ID              |
-| PUT         | http://localhost:22107/posts/:postId  | Changes properties of a specific given its ID|
-| DELETE      | http://localhost:22107/posts/:postId  | Deletes a game from the database given its ID|
+| POST        | http://localhost:12107/posts           | Adds a game to the database                 |
+| GET         | http://localhost:12107/posts           | Gets all the stored games on the database   |
+| GET         | http://localhost:12107/posts/:postId  | Gets a post with a specific ID              |
+| PUT         | http://localhost:12107/posts/:postId  | Changes properties of a specific given its ID|
+| DELETE      | http://localhost:12107/posts/:postId  | Deletes a game from the database given its ID|
 
 
 **Where ":postId" is the id you want to get, change or delete.** You can also try to make requests with invalid endpoints or nonexistent id's. You should be able to see different cases for error handling.
 
 **NOTE: In order to test this, the docker container must be running without errors**
 
-For the **POST http://localhost:22107/posts**, the body should be an "application/json", the structure is like this:
+For the **POST http://localhost:12107/posts**, the body should be an "application/json", the structure is like this:
 
 ```sh
 {
@@ -109,17 +109,17 @@ For the **POST http://localhost:22107/posts**, the body should be an "applicatio
 }
 ```
 
-For the **GET http://localhost:22107/posts**, there is no need for parameters in the URL nor a JSON for the body. You can just test it by setting the url and the setting the correct request type.
+For the **GET http://localhost:12107/posts**, there is no need for parameters in the URL nor a JSON for the body. You can just test it by setting the url and the setting the correct request type.
 
-For the **GET http://localhost:22107/posts/:postId**, there is no need of a JSON for the body, but in this case we do need to use parameters in the url. 
+For the **GET http://localhost:12107/posts/:postId**, there is no need of a JSON for the body, but in this case we do need to use parameters in the url. 
 
-For example if you want to get the post with the ID = 1, you can test it with: http://localhost:22107/posts/1. 
+For example if you want to get the post with the ID = 1, you can test it with: http://localhost:12107/posts/1. 
 
 **Note: The post most exist otherwise an error will occur telling that the post does not exist**
 
-For the **PUT http://localhost:22107/posts/:postId** request (change data on an existing register on the Data Base) the body should be an "application/json" and the URL must include a postID. 
+For the **PUT http://localhost:12107/posts/:postId** request (change data on an existing register on the Data Base) the body should be an "application/json" and the URL must include a postID. 
 
-Like this for example: http://localhost:22107/posts/2. Here we would be changing data from the game/post with Id = 2. 
+Like this for example: http://localhost:12107/posts/2. Here we would be changing data from the game/post with Id = 2. 
 
 **Note: The post most exist otherwise an error will occur telling that the post does not exist**
 
@@ -136,9 +136,9 @@ The values to be changed need a structure like this in the request body:
 }
 ```
 
-For the **DELETE http://localhost:22107/posts/:postId**, there is no need of a JSON for the body, but in this case we do need to use parameters in the url. 
+For the **DELETE http://localhost:12107/posts/:postId**, there is no need of a JSON for the body, but in this case we do need to use parameters in the url. 
 
-For example if you want to delete the post with the ID = 1, you can test it with: http://localhost:22107/posts/1. 
+For example if you want to delete the post with the ID = 1, you can test it with: http://localhost:12107/posts/1. 
 
 **Note: The post most exist otherwise an error will occur telling that the post does not exist**
 
