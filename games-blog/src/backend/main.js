@@ -32,7 +32,7 @@ function authenticateToken(req, res, next) {
 
 app.use(express.json())
 app.use(cors({
-  origin: '*',
+  origin: ['http://62.138.24.147', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }))
