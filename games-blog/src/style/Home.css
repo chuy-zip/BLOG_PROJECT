@@ -96,7 +96,14 @@ body {
     width: 250px;
     height: 300px;
     margin: auto;
+    transition: width 0.3s, height 0.3s; /* Add transition for width and height */
 }
+
+.gameCardContainer:hover {
+    width: 270px;  /* Increase width on hover */
+    height: 320px; /* Increase height on hover */
+}
+
 
 /* cardHeaderCSS */
 .cardHeader {
@@ -110,8 +117,8 @@ body {
     border-top-right-radius: 10px;
     font-weight: bold;
     padding-left: 10px;
-    height: 100px;
-    width: 240px;
+    height: 35%;
+    width: 96.3%;
 }
 
 .cardHeader h2,
