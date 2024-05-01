@@ -43,6 +43,11 @@ Move to the games-blog directory
 cd games-blog
 ```
 
+Do this download to be able to test with npm and vite after
+```
+npm install
+```
+
 ```
 docker compose up --build
 ```
