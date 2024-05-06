@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
 GameCard.propTypes = {
+    gameNum: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     gameDescription: PropTypes.string.isRequired,
     mainPlatform: PropTypes.string.isRequired,
     multiplayerSupport: PropTypes.number.isRequired,
-    onlineFeatures: PropTypes.number.isRequired
+    onlineFeatures: PropTypes.number.isRequired,
+    openModal: PropTypes.func.isRequired
 };
 
 GameProperties.propTypes = {
