@@ -41,11 +41,11 @@ function GameProperties({mainPlatform, multiplayerSupport, onlineFeatures}){
 }
 
 
-function GameCard({title, genre, gameDescription, mainPlatform, multiplayerSupport, onlineFeatures}){
+function GameCard({gameNum, title, genre, gameDescription, mainPlatform, multiplayerSupport, onlineFeatures, openModal}){
 
     return (
-        <div>
-            <div className="gameCardContainer">
+        <div >
+            <div className="gameCardContainer" onClick={ () => openModal(gameNum)}>
                 <div className="cardHeader"> 
                     <h2>{title}</h2>
                     <h4>{genre}</h4>
