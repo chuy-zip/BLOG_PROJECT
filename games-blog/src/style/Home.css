@@ -52,7 +52,7 @@ body {
     padding-top: 40px;
     margin-top: 100px;
     overflow: auto;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 140px);
 }
 
 .gamesContainer::-webkit-scrollbar {
@@ -82,6 +82,7 @@ body {
 @media (max-width: 512px) {
     .gamesContainer {
         margin-top: 170px;
+        height: calc(100vh - 210px);
     }
 }
 
@@ -102,15 +103,12 @@ body {
     width: 250px;
     height: 300px;
     margin: auto;
-    transition: width 0.3s, height 0.3s;
+    transition: 0.3s;
     /* Add transition for width and height */
 }
 
 .gameCardContainer:hover {
-    width: 270px;
-    /* Increase width on hover */
-    height: 320px;
-    /* Increase height on hover */
+    transform: scale(1.1);   
 }
 
 

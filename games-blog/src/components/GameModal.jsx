@@ -9,6 +9,9 @@ GameModal.propTypes = {
 
 function GameModal({ isOpen, onClose, game }) {
     if (!isOpen) return null;
+    
+    let parsedTime = game.created_at.split('T')
+    let time = parsedTime[0]
 
     return (
         <div className="modal">
@@ -35,6 +38,8 @@ function GameModal({ isOpen, onClose, game }) {
 
                 <h4>Description:</h4>
                 <p>{game.game_description}</p>
+
+                <h6>Recommendation date: <p className='normalText'>{time}</p> </h6>
             </div>
         </div>
     );
