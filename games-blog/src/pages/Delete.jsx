@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import useToken from '@hooks/useToken';
 import useApi from '@hooks/useApi';
+import useNavigate from "@hooks/useNavigate"
 
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
@@ -14,7 +15,7 @@ DeleteForm.propTypes = {
     games: PropTypes.array.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    selection: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), 
+    selection: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     successMessage: PropTypes.string.isRequired
 };
 
@@ -24,7 +25,7 @@ function DeleteForm({ games, handleChange, handleSubmit, selection, successMessa
 
             <form onSubmit={handleSubmit}>
                 <h1 style={{ textAlign: "center" }}>
-                    Delete a reccomendation
+                    Delete a recomendation
                 </h1>
 
                 <label htmlFor="gameToDelete">Select the game to be deleted:</label>
@@ -69,9 +70,11 @@ function Delete() {
     const [isEmpty, setIsEmpty] = useState(false);
     const [selection, setSelection] = useState();
     const [successMessage, setSuccessMessage] = useState('');
-    const { token } = useToken() 
-    const { getGames, removeGame} = useApi()
+    const { token, setToken } = useToken()
+    const { getGames, removeGame } = useApi()
+    const { navigate } = useNavigate()
     const [noAuth, setNoAuth] = useState(false)
+
 
     const handleChange = (e) => {
         setSelection(e.target.value);
@@ -80,12 +83,17 @@ function Delete() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            removeGame(selection, token)
-            setSuccessMessage('Succesfully deleted game')
+            await removeGame(selection, token)
             getGames(setVideogames, setIsEmpty, setError, setLoading, setNoAuth, token);
+            setSuccessMessage('Succesfully deleted game')
         } catch (error) {
-            console.error('Error creating game:', error);
-            setSuccessMessage('Something went wrong. Game was not added!');
+            console.error('Error deleting game:', error);
+            setSuccessMessage('Something went wrong. Game was not deleted!');
+            localStorage.clear()
+            setToken(null)
+            alert("An error occured, please log in again")
+            navigate('/login')
+            window.location.replace("#/login");
         }
     };
 
@@ -125,10 +133,10 @@ function Delete() {
         );
     }
 
-    if(noAuth){
+    if (noAuth) {
         return (
             <div>
-                <Auth/>
+                <Auth />
             </div>
         )
 

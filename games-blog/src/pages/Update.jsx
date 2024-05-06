@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import useToken from '@hooks/useToken';
 import useApi from '@hooks/useApi';
+import useNavigate from "@hooks/useNavigate"
 
 import Empty from '@components/Empty';
 import Loading from '@components/Loading';
@@ -152,8 +153,9 @@ function Update() {
     const [selection, setSelection] = useState();
     const [successMessage, setSuccessMessage] = useState('');
     const [noAuth, setNoAuth] = useState(false)
-    const { token } = useToken() 
+    const { token, setToken } = useToken() 
     const { getGames, changeGame} = useApi()
+    const { navigate } = useNavigate()
 
 
     const [formData, setFormData] = useState({
@@ -200,7 +202,11 @@ function Update() {
         } catch (error) {
             console.error('Error creating game:', error);
             setSuccessMessage('Something went wrong. Game was not updated!');
-            // Handle error
+            localStorage.clear()
+            setToken(null)
+            alert("An error occured, please log in again")
+            navigate('/login')
+            window.location.replace("#/login");
         }
     };
 

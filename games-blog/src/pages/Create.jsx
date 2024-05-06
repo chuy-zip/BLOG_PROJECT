@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import useNavigate from "@hooks/useNavigate"
 
 import useApi from '@hooks/useApi';
 import useToken from '@hooks/useToken';
@@ -119,8 +120,9 @@ function Create() {
         onlineFeatures: 'true',
     });
 
+    const { navigate } = useNavigate()
     const { addGame } = useApi()
-    const { token } = useToken() 
+    const { token, setToken } = useToken() 
     const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
@@ -160,7 +162,11 @@ function Create() {
         } catch (error) {
             console.error('Error creating game:', error);
             setSuccessMessage('Something went wrong. Game was not added!');
-            // Handle error
+            localStorage.clear()
+            setToken(null)
+            alert("An error occured, please log in again")
+            navigate('/login')
+            window.location.replace("#/login");
         }
     };
 
