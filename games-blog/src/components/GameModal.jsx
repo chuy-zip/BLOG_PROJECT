@@ -13,12 +13,27 @@ function GameModal({ isOpen, onClose, game }) {
     return (
         <div className="modal">
             <div className="modal-content">
-                <button onClick={onClose}>Close</button>
-                <h1>{game.title}</h1>
-                <h2>{game.genre}</h2>
-                <h3>{game.main_platform}</h3>
-                <h3>{game.multiplayer_support}</h3>
-                <h3>{game.online_features}</h3>
+                <button onClick={onClose} className='modal-Button'>X</button>
+                <br/>
+                <h1 className='titleWithLine'>{game.title}</h1>
+                <h2> Main genre: <p className='normalText'>{game.genre}</p></h2>
+                <h3> Main Platform: <p className='normalText'>{game.main_platform}</p></h3>
+                <h4 className='styledText'> 
+                    { game.multiplayer_support ? 
+                        'You can play this game with friends locally' 
+                        : 
+                        'You can only play on singleplayer locally' 
+                    }
+                </h4>
+
+                <h4 className='styledText'>
+                    { game.online_features ? 
+                        'This game has online features including multiplayer' 
+                        : 
+                        'The game does not have online features' }
+                </h4>
+
+                <h4>Description:</h4>
                 <p>{game.game_description}</p>
             </div>
         </div>

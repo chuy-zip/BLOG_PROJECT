@@ -15,10 +15,10 @@ GameProperties.propTypes = {
     onlineFeatures: PropTypes.number.isRequired
 }
 
-function GameProperties({mainPlatform, multiplayerSupport, onlineFeatures}){
+function GameProperties({ mainPlatform, multiplayerSupport, onlineFeatures }) {
 
     return (
-        <table style={{margin: 'auto', textAlign: 'center', paddingTop: '10px'}}>
+        <table style={{ margin: 'auto', textAlign: 'center', paddingTop: '10px' }}>
             <thead>
                 <tr>
                     <th style={{ fontSize: '12px' }}>Platform</th>
@@ -41,19 +41,19 @@ function GameProperties({mainPlatform, multiplayerSupport, onlineFeatures}){
 }
 
 
-function GameCard({gameNum, title, genre, gameDescription, mainPlatform, multiplayerSupport, onlineFeatures, openModal}){
+function GameCard({ gameNum, title, genre, gameDescription, mainPlatform, multiplayerSupport, onlineFeatures, openModal }) {
 
     return (
         <div >
-            <div className="gameCardContainer" onClick={ () => openModal(gameNum)}>
-                <div className="cardHeader"> 
+            <div className="gameCardContainer" onClick={() => openModal(gameNum)}>
+                <div className="cardHeader">
                     <h2>{title}</h2>
                     <h4>{genre}</h4>
                 </div>
-                <GameProperties mainPlatform={mainPlatform} multiplayerSupport={multiplayerSupport} onlineFeatures={onlineFeatures}/>
-                <p style={{paddingLeft: '12px'}}> {gameDescription}</p>
+                <GameProperties mainPlatform={mainPlatform} multiplayerSupport={multiplayerSupport} onlineFeatures={onlineFeatures} />
+                <p className="gameDescription" style={{ paddingLeft: '12px' }}>{gameDescription}</p>
             </div>
-            
+
         </div>
     )
 }

@@ -63,11 +63,16 @@ a:hover {
   background-color: #3c5474;
 }
 
+.iconLink {
+  color: #fff;
+}
+
 .clickableIcon {
   margin: 10px;
   width: 60px;
   height: 60px;
   right: 0;
+  bottom: 10px;
   position: absolute;
 }
 

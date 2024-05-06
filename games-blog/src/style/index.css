@@ -66,11 +66,6 @@ button:focus-visible {
   height: 10px; /* Set the height to 5px for horizontal scrollbar */
 }
 
-.formContainer::-webkit-scrollbar-track {
-  background: #ffffff;
-  border-radius: 5px;
-}
-
 .formContainer::-webkit-scrollbar-thumb {
   background: #69abc1;
   border-radius: 5px;

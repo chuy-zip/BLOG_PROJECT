@@ -5,16 +5,18 @@ Icon.propTypes = {
     url: PropTypes.string.isRequired
 };
 
-function Icon({imgSrc, url}){
+function Icon({ imgSrc, url }) {
     return (
-        <figure  >
-            <img 
-                src={imgSrc} 
-                alt="Icon" 
-                href = {url}
-                className="clickableIcon"/> 
+        <figure>
+            <a href={url} target="_blank" rel="noopener noreferrer" className="iconLink">
+                <img 
+                    src={imgSrc} 
+                    alt="Icon" 
+                    className="clickableIcon"
+                />
+            </a>
         </figure>
     );
 }
 
-export default Icon
+export default Icon;

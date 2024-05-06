@@ -102,12 +102,15 @@ body {
     width: 250px;
     height: 300px;
     margin: auto;
-    transition: width 0.3s, height 0.3s; /* Add transition for width and height */
+    transition: width 0.3s, height 0.3s;
+    /* Add transition for width and height */
 }
 
 .gameCardContainer:hover {
-    width: 270px;  /* Increase width on hover */
-    height: 320px; /* Increase height on hover */
+    width: 270px;
+    /* Increase width on hover */
+    height: 320px;
+    /* Increase height on hover */
 }
 
 
@@ -139,18 +142,94 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background overlay */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* semi-transparent background overlay */
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
+    align-items: start;
+}
+
+.modal-content {
+    margin-top: 140px;
+    min-width: 180px;
+    max-height: 60%;
     background-color: #fff;
-    padding: 20px;
+    padding: 40px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* additional styles for close button, title, description, etc. can be added here */
-  
+    width: 70%;
+    overflow-y: auto;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+    /* Set the height to 5px for horizontal scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #69abc1;
+    border-radius: 5px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #223f61;
+}
+
+@media only screen and (max-width: 512px) {
+    .modal-content {
+        margin-top: 200px;
+    }
+}
+
+/* CSS */
+.titleWithLine {
+    text-align: left;
+    position: relative;
+    /* To position the line relative to the title */
+    display: inline-block;
+    /* Ensures that the width of the container is based on its content */
+}
+
+.titleWithLine::after {
+    content: '';
+    /* Required for the pseudo-element */
+    position: absolute;
+    /* Position the line absolutely within the container */
+    bottom: -10px;
+    /* Adjust this value to control the distance between the line and the title */
+    right: 0;
+    /* Position the line starting from the left edge of the container */
+    width: 100%;
+    /* Make the line span the entire width of the container */
+    height: 2px;
+    /* Set the height of the line */
+    background-color: #828080;
+    /* Color of the line */
+}
+
+.normalText {
+    font-weight: normal;
+    display: inline-block;
+    margin: 0px;
+}
+
+.styledText {
+    font-family: italic;
+    text-decoration: underline;
+}
+
+.gameDescription {
+    max-height: 100px;
+    /* Set the maximum height for the container */
+    overflow: hidden;
+    /* Hide any content that exceeds the specified height and width */
+}
+
+.modal-Button {
+    margin: 0;
+    position: sticky;
+    display: inline-block;
+    top: 0;
+    z-index: 100;
+}
