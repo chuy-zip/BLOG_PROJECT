@@ -17,5 +17,5 @@ export default defineConfig({
       '@hooks': '/src/hooks'
     }
   },
-  base: '/proyecto/221007/dist/' 
+  base: '/proyecto/221007/' 
 });

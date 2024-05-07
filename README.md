@@ -4,6 +4,11 @@ The general theme of this project is to crate a web app by making both frontend 
 ## About the author
 Hi my name is Ricardo Chuy, I'm from Guatemala and I'm Currently studying Computer Science. I really like creating stuff and participating in new activities to always keep learning. If you are reading this, thank you very much for your interest and I hope this project helps you improve your skills and knowledge about programming.
 
+## Watch it live here:
+http://62.138.24.147/proyecto/221007/#/
+
+The docker compose inside /var/www/html/proyecto/221007/games-blog must be running.
+
 ## How it works
 To put it as simple as possible, I broke down the functionallity of the project into steps:
 
@@ -33,7 +38,7 @@ To put it as simple as possible, I broke down the functionallity of the project 
 * HTML
 * CSS
 
-## Usage 
+## Usage (Local)
 Running this project is fairly simple. The only requirements are to have Node.js installed and also Docker in your computer, in order to lift the containers with the configuration I made with docker compose. Once you have installed them, have cloned the repository and opened the project folder, you only have to run the following commands:
 
 Ther first and **Most important thing** is to change the names of the files **.env.EXAMPLE** and **docker-compose.EXAMPLE.yml** to .env and docker-compose.yml. Also, you will need to manually add a string to the .env file. 
