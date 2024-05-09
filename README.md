@@ -1,4 +1,4 @@
-# LAB6_SERVER_SIDE_JS
+# BLOG_PROJECT
 The general theme of this project is to crate a web app by making both frontend and backend, for a blog about a topic of interest. In my case I decided to make it about my favorite games and im creating my own API for managing HTTP requests that can create, read, update and delete data into a DataBase with Node Js, Express and Docker. For the frontend I worked with vite, React and CSS (without any additional frameworks).
 
 ## About the author
